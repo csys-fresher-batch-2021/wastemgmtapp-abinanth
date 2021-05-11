@@ -2,22 +2,27 @@ package com.abinanth.services;
 
 import java.util.ArrayList;
 
-public class HouseManager {
+public class HouseManagerService {
 
-	static ArrayList<String> houseList = new ArrayList<String>();
+	private static  final ArrayList<String> houseList = new ArrayList<String>();
 
-//	public static void addHouse(String houseNo, String street, String city) {
+//	public static String addHouse(String houseNo, String street, String city) {
 //		String house = houseNo + "," + street + "," + city;
 //		
 //		System.out.println(houseList);
+//		return house;
 //
+//	}
+//	
+//	public static boolean exists(String house){
+//		return houseList.contains(house);
 //	}
 	
 	
 	// adding houseNo, street, city
 	static {
 		
-		String houseNo="13/3";
+		String houseNo="13/3a";
 		String street="anna";
 		String city="CBE";
 		String house = houseNo + "," + street + "," + city;
