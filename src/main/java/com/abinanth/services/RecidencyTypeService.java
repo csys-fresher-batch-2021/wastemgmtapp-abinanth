@@ -16,8 +16,6 @@ public class RecidencyTypeService
 		return recidencyType;
 	
 	}
-//	public static List<String> displayAllRecidencyType() {
-//		return recidencyType;
-//	}
+
 
 }

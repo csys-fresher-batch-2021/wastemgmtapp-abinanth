@@ -8,13 +8,7 @@ import com.abinanth.services.HouseManagerService;
 
 public class HouseManagerTest {
 
-//	@Test
-//	public void test() {
-//		String house = "13" + "," + "anna" + "," + "CBE";	
-//		HouseManager.addHouse("13", "anna", "CBE");
-//		
-//		assertTrue(HouseManager.exists(house));
-//	}
+
 	@Test
 	public void dispalyHouseDetails1() {
 		int actualSize = HouseManagerService.displayAllHouseDetails().size();
