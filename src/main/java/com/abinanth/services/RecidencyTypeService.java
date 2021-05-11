@@ -5,7 +5,10 @@ import java.util.List;
 
 public class RecidencyTypeService
 {
-	
+
+	private RecidencyTypeService() {
+		
+	}
 	private static final List<String> recidencyType=new ArrayList<>();
 	static {
 		recidencyType.add("House");
