@@ -37,5 +37,7 @@
 
 
 	</table>
+	<a href="addRecidency.jsp">Add Recidency</a>
+	<a href="deleteRecidencyType.jsp">Delete Recidency</a>
 </body>
 </html>

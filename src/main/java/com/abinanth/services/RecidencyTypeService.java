@@ -19,6 +19,15 @@ public class RecidencyTypeService
 		return recidencyType;
 	
 	}
-
+//	public static List<String> addRecidencyType(String newRecidency) {
+//		
+//		recidencyType.add(newRecidency);
+//		return recidencyType;
+//		
+//	}
+//	public static List<String> deleteRecidencyType(String deleteRecidency) {
+//		recidencyType.remove(deleteRecidency);
+//		return recidencyType;
+//	}
 
 }
