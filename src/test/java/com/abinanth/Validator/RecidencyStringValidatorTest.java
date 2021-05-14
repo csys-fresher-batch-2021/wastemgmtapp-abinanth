@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import com.abinanth.validator.RecidencyStringValidator;
 
-public class recidencyStringValidatorTest {
+public class RecidencyStringValidatorTest {
 
 	@Test
 	public void validTest() {
