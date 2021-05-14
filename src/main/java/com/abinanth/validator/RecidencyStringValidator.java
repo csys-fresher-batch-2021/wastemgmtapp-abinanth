@@ -1,7 +1,7 @@
 package com.abinanth.validator;
 
-public class recidencyStringValidator {
-	private recidencyStringValidator() {
+public class RecidencyStringValidator {
+	private RecidencyStringValidator() {
 
 	}
 

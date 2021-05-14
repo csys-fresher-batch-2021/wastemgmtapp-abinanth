@@ -2,17 +2,11 @@ package com.abinanth.service;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.Test;
 
 import com.abinanth.services.AddProductRecidency;
-import com.abinanth.services.RecidencyTypeService;
-
-
 public class AddProductRecidencyTest {
-	private static final List<String> recidencyType = new ArrayList<>();
+
 	
 	
 		@Test

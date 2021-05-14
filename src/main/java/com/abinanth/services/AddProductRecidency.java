@@ -3,7 +3,7 @@ package com.abinanth.services;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.abinanth.validator.recidencyStringValidator;
+import com.abinanth.validator.RecidencyStringValidator;
 
 public class AddProductRecidency {
 	private static final List<String> recidencyType = new ArrayList<>();
@@ -24,19 +24,19 @@ public class AddProductRecidency {
  * @return
  */
 	public static boolean addRecidencyType(String newRecidency) {
-		boolean valid = false;
+		boolean valid = true;
 
 		newRecidency = newRecidency.toLowerCase(); 
 	
 		
 		if (recidencyType.contains(newRecidency)) {
-			System.out.println("Already Exist");
+			
 			valid = false;
 		} else {
 			
-			if (recidencyStringValidator.stringValidation(newRecidency)) {
+			if (RecidencyStringValidator.stringValidation(newRecidency)) {
 				recidencyType.add(newRecidency);
-				valid = true;
+			
 			}
 		}
 

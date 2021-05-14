@@ -27,7 +27,7 @@ public class RecidencyTypeService {
 		boolean valid = false;
 
 		if (recidencyType.contains(newRecidency)) {
-			System.out.println("Already contains");
+			
 			valid = false;
 		} else {
 			recidencyType.add(newRecidency);
