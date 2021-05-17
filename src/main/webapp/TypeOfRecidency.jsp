@@ -1,5 +1,6 @@
 <%@page import="java.util.List"%>
 <%@page import="com.abinanth.services.RecidencyTypeService"%>
+<%@page import="com.abinanth.services.AddProductRecidency"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -21,7 +22,7 @@
 		</thead>
 		<tbody>
 		<%
-		List<String> recidencyType=RecidencyTypeService.getRecidencyType();
+		List<String> recidencyType=AddProductRecidency.displayRecidencyType();
 				int i=0;
 				for(String recidency: recidencyType) {
 			i++;
@@ -33,9 +34,13 @@
 <%} %>
 
 		</tbody>
-
-
-
 	</table>
+	<a href="addRecidency.jsp">Add Recidency</a>
 </body>
 </html>
+
+
+
+
+
+
