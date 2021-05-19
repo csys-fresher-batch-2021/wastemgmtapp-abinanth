@@ -12,16 +12,16 @@ public class RecidencyStringValidator {
 	 * @param newRecidencyName
 	 * @return
 	 */
-	public static boolean stringValidation(String newRecidencyName) {
+	public static boolean stringValidation(String recidencyName) {
 
 		boolean isValidService = true;
 
-		if (newRecidencyName.length() == 0 || newRecidencyName.trim().equals("")) {
+		if (recidencyName.length() == 0 || recidencyName.trim().equals("")) {
 			isValidService = false;
 		}
 
-		for (int index = 0; index < newRecidencyName.length(); index++) {
-			if (newRecidencyName.charAt(index) >= '0' && newRecidencyName.charAt(index) <= '9') {
+		for (int index = 0; index < recidencyName.length(); index++) {
+			if (recidencyName.charAt(index) >= '0' && recidencyName.charAt(index) <= '9') {
 				isValidService = false;
 
 			}

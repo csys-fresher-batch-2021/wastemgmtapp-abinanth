@@ -1,7 +1,6 @@
 package com.abinanth.service;
 
 import static org.junit.Assert.*;
-import java.util.List;
 
 import org.junit.Test;
 
@@ -10,19 +9,22 @@ import com.abinanth.services.RecidencyTypeService;
 public class RecidencyTypeServiceTest {
 
 	@Test
-	public void test() {
-		List<String> recidencyType = RecidencyTypeService.displayRecidencyType();
+	public void addProduct() {
+		String newRecidency = "textile";
 
-		assertEquals(3, recidencyType.size());
+		boolean newProductAdded = RecidencyTypeService.addRecidencyType(newRecidency);
+
+		// System.out.println(recidencyType);
+		assertTrue(newProductAdded);
 
 	}
 
 	@Test
-	public void addRecidency() {
-		String newRecidency = "Textile";
+	public void addingExistingRecidency() {
+		String newRecidency = "industry";
 
-		boolean exist = RecidencyTypeService.addRecidencyType(newRecidency);
-		assertTrue(exist);
+		boolean existingProductAdded = RecidencyTypeService.addRecidencyType(newRecidency);
+		assertFalse(existingProductAdded);
 
 	}
 

@@ -7,7 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.abinanth.services.AddProductRecidency;
+import com.abinanth.services.RecidencyTypeService;
+
 
 
 /**
@@ -31,7 +32,7 @@ public class AddRecidencyServlet extends HttpServlet {
 		
 		String newRecidency = request.getParameter("recidency");
 
-		boolean isValid = AddProductRecidency.addRecidencyType(newRecidency);
+		boolean isValid = RecidencyTypeService.addRecidencyType(newRecidency);
 		if (isValid) {
 
 			response.sendRedirect("TypeOfRecidency.jsp");

@@ -18,7 +18,7 @@
 				<li class="nav-item"><a class="nav-link"
 					href="TypeOfRecidency.jsp">Recidency Type</a></li>
 				<li class="nav-item"><a class="nav-link"
-					href="DisplayHouseDetails.jsp">Display House Details</a></li>
+					href="displayRecidencyTypes.jsp">Display Recidency Details</a></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" id="dropdownId"
 					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
