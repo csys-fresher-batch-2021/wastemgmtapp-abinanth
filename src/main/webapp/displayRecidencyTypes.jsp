@@ -1,19 +1,16 @@
-
-
-<%@page import="java.util.List"%>
 <%@page import="com.abinanth.services.RecidencyTypeService"%>
-
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<title>Waste Management</title>
-
+<title>Insert title here</title>
 </head>
 <body>
-	<jsp:include page="header.jsp"></jsp:include>
+<jsp:include page="header.jsp"></jsp:include>
+	<main class="container-fluid">
 	<table class=" table table-container-fluid">
 		<caption>Available Recidency</caption>
 		<thead>
@@ -32,21 +29,11 @@
 			<tr>
 				<td><%=i%></td>
 				<td><%=recidency%></td>
-				<td><a href="deleteRecidencyServlet?recidencyType=<%=recidency %>" class="btn btn-danger">Delete</a></td>
-			</tr>
-			<%
-			}
-			%>
-
-		</tbody>
-	</table>
-	<a href="addRecidency.jsp">Add Recidency</a>
+				</tr>
+				<%} %>
+				</tbody>
+				</table>
+				</main>
 
 </body>
 </html>
-
-
-
-
-
-
