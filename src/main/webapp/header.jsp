@@ -17,22 +17,17 @@ String username=(String)session.getAttribute("LOGGED_IN_USER");
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 				<li class="nav-item active"><a class="nav-link"
 					href="index.jsp">Home <span class="sr-only">(current)</span></a></li>
-					<%
-					if(username!=null) {%>
+					
 						
 					
 				<li class="nav-item"><a class="nav-link"
-					href="TypeOfRecidency.jsp">Recidency Type</a></li>
+					href="TypeOfRecidency.jsp">Recidency Types</a></li>
 				<li class="nav-item"><a class="nav-link"
-					href="displayRecidencyTypes.jsp">Display Recidency Details</a></li>
-					<%} %>
-				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="#" id="dropdownId"
-					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-					<div class="dropdown-menu" aria-labelledby="dropdownId">
-						<a class="dropdown-item" href="#">Action 1</a> <a
-							class="dropdown-item" href="#">Action 2</a>
-					</div></li>
+					href="displayRecidencyTypes.jsp">Recidency Details</a></li>
+					
+				
+					
+                    
 			</ul>
 			<%
 			if(username==null) {
@@ -44,7 +39,11 @@ String username=(String)session.getAttribute("LOGGED_IN_USER");
 				</li>
 			</ul>
 			<%} else { %>
+			
 					<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+					<li class="nav-item active"><a class="nav-link"
+					href="#">Welcome <%=username %></a></li>
+					
 				<li class="nav-item active"><a class="nav-link"
 					href="AdminLogout">Logout</a></li>
 					</ul>
