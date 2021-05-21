@@ -24,6 +24,13 @@
 		</thead>
 		<tbody>
 			<%
+		String infoMessage = request.getParameter("infoMessage");
+		if (infoMessage != null) {
+			out.println("<font color='green'>" + infoMessage + "</font>");
+		}
+		%>
+		
+			<%
 			List<String> recidencyType = RecidencyTypeService.displayRecidencyType();
 					int i = 0;
 					for (String recidency : recidencyType) {

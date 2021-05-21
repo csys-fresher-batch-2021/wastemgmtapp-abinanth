@@ -26,12 +26,11 @@ public class DeleteRecidencyServlet extends HttpServlet {
 
 		boolean isValid = RecidencyTypeService.deleteRecidencyType(deleteRecidency);
 		if (isValid) {
-			String infoMessage=" Deleted";
+			String infoMessage="Recidency Deleted Sucessfully";
 			response.sendRedirect("TypeOfRecidency.jsp?infoMessage="+ infoMessage);
 
 		} else {
-			String message="cannot deleted";
-			response.sendRedirect("TypeOfRecidency.jsp?message="+message);
+			response.sendRedirect("TypeOfRecidency.jsp");
 		}
 
 }

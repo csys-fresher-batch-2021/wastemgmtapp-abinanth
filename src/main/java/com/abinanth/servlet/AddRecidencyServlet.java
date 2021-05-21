@@ -34,7 +34,7 @@ public class AddRecidencyServlet extends HttpServlet {
 
 		boolean isValid = RecidencyTypeService.addRecidencyType(newRecidency);
 		if (isValid) {
-
+			
 			response.sendRedirect("TypeOfRecidency.jsp");
 
 		} else {
