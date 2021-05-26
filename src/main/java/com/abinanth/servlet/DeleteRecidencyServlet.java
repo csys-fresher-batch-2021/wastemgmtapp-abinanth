@@ -6,11 +6,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-
+import com.abinanth.model.RecidencyModel;
 import com.abinanth.services.RecidencyTypeService;
-
-
 
 @WebServlet("/deleteRecidencyServlet")
 public class DeleteRecidencyServlet extends HttpServlet {
@@ -20,18 +17,16 @@ public class DeleteRecidencyServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		
-		
 		String deleteRecidency = request.getParameter("recidencyType");
-
-		boolean isValid = RecidencyTypeService.deleteRecidencyType(deleteRecidency);
+		RecidencyModel delete = new RecidencyModel(deleteRecidency);
+		boolean isValid = RecidencyTypeService.deleteRecidencyType(delete);
 		if (isValid) {
-			String infoMessage="Recidency Deleted Sucessfully";
-			response.sendRedirect("TypeOfRecidency.jsp?infoMessage="+ infoMessage);
+			String infoMessage = "Recidency Deleted Sucessfully";
+			response.sendRedirect("TypeOfRecidency.jsp?infoMessage=" + infoMessage);
 
 		} else {
 			response.sendRedirect("TypeOfRecidency.jsp");
 		}
 
-}
+	}
 }

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import java.util.List;
 
+import com.abinanth.dao.RecidencyDao;
+import com.abinanth.model.RecidencyModel;
 
 public class RecidencyTypeService {
 
@@ -11,47 +13,60 @@ public class RecidencyTypeService {
 
 	}
 
-	private static final List<String> recidencyType = new ArrayList<>();
-	static {
-		recidencyType.add("house");
-		recidencyType.add("shop");
-		recidencyType.add("industry");
-	}
+	public static List<RecidencyModel> displayRecidencyType() {
+		RecidencyDao dao = new RecidencyDao();
+		List<RecidencyModel> recidencyList = dao.displayRecidency();
 
-	public static List<String> displayRecidencyType() {
-		return recidencyType;
-		
+		return recidencyList;
 
 	}
 
-	public static boolean addRecidencyType(String newRecidency) {
-		newRecidency=newRecidency.toLowerCase();
+	public static boolean addRecidencyType(RecidencyModel newRecidency) {
 
 		boolean valid = false;
+		boolean exists = false;
+		RecidencyDao dao = new RecidencyDao();
+		List<RecidencyModel> recidencyTypes = dao.displayRecidency();
+		for (RecidencyModel recidencyModel : recidencyTypes) {
+			
+		
+		if (recidencyModel.getNewRecidency().equalsIgnoreCase(newRecidency.getNewRecidency())) {
 
-		if (recidencyType.contains(newRecidency)) {
+			exists = true;
+			break;
+		}
+		
+		}
+		
+		if(!exists) {
 			
-			valid = false;
-		} else {
-			
-			recidencyType.add(newRecidency);
+			dao.addRecidency(newRecidency);
 			valid = true;
 		}
 
 		return valid;
 
 	}
-	public static boolean deleteRecidencyType(String deleteRecidency) {
+
+	public static boolean deleteRecidencyType(RecidencyModel deleteRecidency) {
 		boolean valid = false;
-	
-			if (recidencyType.contains(deleteRecidency)) {
-				recidencyType.remove(deleteRecidency);
-				valid = true;
-			}
+		RecidencyDao dao = new RecidencyDao();
+		List<RecidencyModel> recidencyType = dao.displayRecidency();
+		for(RecidencyModel recidency:recidencyType) {
+		String deleteRecidency2 = recidency.getNewRecidency();
+		if(deleteRecidency != null) {
+		if(deleteRecidency2.equalsIgnoreCase(deleteRecidency.getNewRecidency())) {
+		
+			valid = true;
+		}
+		}
+		
 
-
+	}
+		if(valid) {
+			dao.deleteRecidency(deleteRecidency);
+		}
 		return valid;
-
 	}
 
 }
