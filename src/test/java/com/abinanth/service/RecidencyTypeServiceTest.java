@@ -11,7 +11,7 @@ public class RecidencyTypeServiceTest {
 
 	@Test
 	public void addProduct() {
-		RecidencyModel addRecidency=new RecidencyModel("textile");
+		RecidencyModel addRecidency=new RecidencyModel("Dying industry");
 
 		boolean newProductAdded = RecidencyTypeService.addRecidencyType(addRecidency);
 		assertTrue(newProductAdded);

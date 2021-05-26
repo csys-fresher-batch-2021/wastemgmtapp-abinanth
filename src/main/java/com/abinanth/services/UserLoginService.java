@@ -6,7 +6,7 @@ import com.abinanth.validator.LoginValidation;
 import com.abinanth.model.*;
 
 public class UserLoginService {
-	public UserLoginService(String username, String password) {
+	private UserLoginService() {
 		
 	}	
 		public static boolean checkUserLogin(String username,String password) {

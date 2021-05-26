@@ -1,6 +1,6 @@
 package com.abinanth.services;
 
-import java.util.ArrayList;
+
 
 import java.util.List;
 
@@ -54,11 +54,11 @@ public class RecidencyTypeService {
 		List<RecidencyModel> recidencyType = dao.displayRecidency();
 		for(RecidencyModel recidency:recidencyType) {
 		String deleteRecidency2 = recidency.getNewRecidency();
-		if(deleteRecidency != null) {
-		if(deleteRecidency2.equalsIgnoreCase(deleteRecidency.getNewRecidency())) {
+		if(deleteRecidency != null && deleteRecidency2.equalsIgnoreCase(deleteRecidency.getNewRecidency())) {
+	
 		
 			valid = true;
-		}
+		
 		}
 		
 
