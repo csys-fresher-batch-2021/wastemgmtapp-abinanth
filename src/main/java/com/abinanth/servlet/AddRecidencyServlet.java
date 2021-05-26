@@ -7,9 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.abinanth.model.RecidencyModel;
 import com.abinanth.services.RecidencyTypeService;
-
-
 
 /**
  * Servlet implementation class AddRecidencyServlet
@@ -28,13 +27,11 @@ public class AddRecidencyServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		
-		
 		String newRecidency = request.getParameter("recidency");
-
-		boolean isValid = RecidencyTypeService.addRecidencyType(newRecidency);
+		RecidencyModel recidencyPackage = new RecidencyModel(newRecidency);
+		boolean isValid = RecidencyTypeService.addRecidencyType(recidencyPackage);
 		if (isValid) {
-			
+
 			response.sendRedirect("TypeOfRecidency.jsp");
 
 		} else {

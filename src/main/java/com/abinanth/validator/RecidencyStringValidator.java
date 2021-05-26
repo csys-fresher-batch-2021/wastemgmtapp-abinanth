@@ -1,5 +1,7 @@
 package com.abinanth.validator;
 
+
+
 public class RecidencyStringValidator {
 	private RecidencyStringValidator() {
 
@@ -12,21 +14,23 @@ public class RecidencyStringValidator {
 	 * @param newRecidencyName
 	 * @return
 	 */
-	public static boolean stringValidation(String recidencyName) {
+	public static boolean stringValidation(String username) {
 
 		boolean isValidService = true;
 
-		if (recidencyName.length() == 0 || recidencyName.trim().equals("")) {
+		if (username.length() == 0 || username.trim().equals("")) {
 			isValidService = false;
 		}
 
-		for (int index = 0; index < recidencyName.length(); index++) {
-			if (recidencyName.charAt(index) >= '0' && recidencyName.charAt(index) <= '9') {
+		for (int index = 0; index < username.length(); index++) {
+			if (username.charAt(index) >= '0' && username.charAt(index) <= '9') {
 				isValidService = false;
 
 			}
 		}
 		return isValidService;
 	}
+
+	
 
 }

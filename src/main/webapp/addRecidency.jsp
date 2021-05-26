@@ -11,6 +11,7 @@
 
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
+	<form action="AddRecidencyServlet" method="post">
 		<%
 		String errorMessage = request.getParameter("errorMessage");
 		if (errorMessage != null) {
@@ -21,7 +22,7 @@
 
 
 		<h2>Add Recidency</h2>
-		<form action="AddRecidencyServlet" method="post">
+		
 			<label for=" addRecidency">Recidency</label> <input type="text"
 				name="recidency" required>
 			<button type="submit">Submit</button>

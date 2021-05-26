@@ -1,3 +1,4 @@
+<%@page import="com.abinanth.model.RecidencyModel"%>
 <%@page import="com.abinanth.services.RecidencyTypeService"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -21,14 +22,14 @@
 		</thead>
 		<tbody>
 			<%
-			List<String> recidencyType = RecidencyTypeService.displayRecidencyType();
+			List<RecidencyModel> recidencyType = RecidencyTypeService.displayRecidencyType();
 					int i = 0;
-					for (String recidency : recidencyType) {
+					for (RecidencyModel recidency : recidencyType) {
 						i++;
 			%>
 			<tr>
 				<td><%=i%></td>
-				<td><%=recidency%></td>
+				<td><%=recidency.getNewRecidency()%></td>
 				</tr>
 				<%} %>
 				</tbody>
