@@ -11,10 +11,10 @@ public class ConnectionUtil {
 	}
 
 	public static Connection getConnection() throws ClassNotFoundException, SQLException {
-		String driverClass = "org.postgresql.Driver";
-		String url = "jdbc:postgresql://localhost/WasteManagement_db";
-		String username = "postgres";
-		String password = "Haicoimbatore1!";
+		 String driverClass = System.getenv("spring.datasource.driver-class-name");
+		 String url = System.getenv("spring.datasource.url");
+	 String username = System.getenv("spring.datasource.username");
+		 String password = System.getenv("spring.datasource.password");
 		Class.forName(driverClass);
 		Connection connection = DriverManager.getConnection(url, username, password);
 		
