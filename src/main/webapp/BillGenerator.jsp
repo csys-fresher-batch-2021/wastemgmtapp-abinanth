@@ -17,6 +17,7 @@ String finalamount=(String)session.getAttribute("amount");
 String recidencyType=(String)session.getAttribute("recidencyType");
 %>
 <table class=" table table-container-fluid">
+<caption>Bill is Generated</caption>
 <h2>Get your bill</h2>
 <thead>
 <tr>
