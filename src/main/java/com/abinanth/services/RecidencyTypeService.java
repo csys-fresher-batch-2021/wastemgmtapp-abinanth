@@ -1,7 +1,5 @@
 package com.abinanth.services;
 
-
-
 import java.util.List;
 
 import com.abinanth.dao.RecidencyDao;
@@ -28,18 +26,17 @@ public class RecidencyTypeService {
 		RecidencyDao dao = new RecidencyDao();
 		List<RecidencyModel> recidencyTypes = dao.displayRecidency();
 		for (RecidencyModel recidencyModel : recidencyTypes) {
-			
-		
-		if (recidencyModel.getNewRecidency().equalsIgnoreCase(newRecidency.getNewRecidency())) {
 
-			exists = true;
-			break;
+			if (recidencyModel.getNewRecidency().equalsIgnoreCase(newRecidency.getNewRecidency())) {
+
+				exists = true;
+				break;
+			}
+
 		}
-		
-		}
-		
-		if(!exists) {
-			
+
+		if (!exists) {
+
 			dao.addRecidency(newRecidency);
 			valid = true;
 		}
@@ -52,18 +49,16 @@ public class RecidencyTypeService {
 		boolean valid = false;
 		RecidencyDao dao = new RecidencyDao();
 		List<RecidencyModel> recidencyType = dao.displayRecidency();
-		for(RecidencyModel recidency:recidencyType) {
-		String deleteRecidency2 = recidency.getNewRecidency();
-		if(deleteRecidency != null && deleteRecidency2.equalsIgnoreCase(deleteRecidency.getNewRecidency())) {
-	
-		
-			valid = true;
-		
-		}
-		
+		for (RecidencyModel recidency : recidencyType) {
+			String deleteRecidency2 = recidency.getNewRecidency();
+			if (deleteRecidency != null && deleteRecidency2.equalsIgnoreCase(deleteRecidency.getNewRecidency())) {
 
-	}
-		if(valid) {
+				valid = true;
+
+			}
+
+		}
+		if (valid) {
 			dao.deleteRecidency(deleteRecidency);
 		}
 		return valid;

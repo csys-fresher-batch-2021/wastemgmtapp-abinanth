@@ -1,7 +1,6 @@
 package com.abinanth.services;
 
 import java.util.HashMap;
-
 public class AdminLogin {
 	private AdminLogin() {
 

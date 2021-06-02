@@ -9,12 +9,13 @@ public class ConnectionUtil {
 	private ConnectionUtil() {
 
 	}
+	private static String driverClass = System.getenv("spring.datasource.driver-class-name");
+	private static String url = System.getenv("spring.datasource.url");
+private static String username = System.getenv("spring.datasource.username");
+private	static String password = System.getenv("spring.datasource.password");
 
 	public static Connection getConnection() throws ClassNotFoundException, SQLException {
-		 String driverClass = System.getenv("spring.datasource.driver-class-name");
-		 String url = System.getenv("spring.datasource.url");
-	 String username = System.getenv("spring.datasource.username");
-		 String password = System.getenv("spring.datasource.password");
+		 
 		Class.forName(driverClass);
 		Connection connection = DriverManager.getConnection(url, username, password);
 		

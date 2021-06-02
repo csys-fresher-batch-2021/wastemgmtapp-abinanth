@@ -25,7 +25,10 @@ String username = (String)session.getAttribute("LOGGED_IN_USER");
 	<label> Password</label>
 	<input type="password" id="adminPassword" name="adminPassword"required><br>
 	<button type="submit" class="btn btn-primary">Submit</button>
-	<button  type="reset" class="btn btn-danger">Reset</button>
+	<button  type="reset" class="btn btn-danger">Reset</button><br>
+	Note :<br>
+	Admin name=admin<br>
+	Admin password=admin123
 	</form>
 	</main>
 <a href="UserLogin.jsp">User Login</a>

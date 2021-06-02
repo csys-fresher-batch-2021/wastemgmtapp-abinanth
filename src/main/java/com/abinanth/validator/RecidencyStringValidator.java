@@ -1,7 +1,5 @@
 package com.abinanth.validator;
 
-
-
 public class RecidencyStringValidator {
 	private RecidencyStringValidator() {
 
@@ -30,7 +28,5 @@ public class RecidencyStringValidator {
 		}
 		return isValidService;
 	}
-
-	
 
 }
