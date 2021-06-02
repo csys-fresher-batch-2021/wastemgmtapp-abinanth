@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="assets/css/fontawesome.min.css">
 <link rel="stylesheet" href="assets/css/style.css">
 <%
+String adminName=(String)session.getAttribute("LOGGED_IN_Admin");
 String username=(String)session.getAttribute("LOGGED_IN_USER");
 %>
 <header>
@@ -20,34 +21,53 @@ String username=(String)session.getAttribute("LOGGED_IN_USER");
 					
 						
 					
-				<li class="nav-item"><a class="nav-link"
+				
+						<% 
+						if(adminName!=null) {%>
+						<li class="nav-item"><a class="nav-link"
 					href="TypeOfRecidency.jsp">Recidency Types</a></li>
 				<li class="nav-item"><a class="nav-link"
 					href="displayRecidencyTypes.jsp">Recidency Details</a></li>
+					<%}%>
+					<%if(username!=null){ %>
 					
-				
+						<li class="nav-item active"><a class="nav-link"
+								href="BillCalculator.jsp">Bill Generator</a></li>	
+								
+					<%} %>
 					
-                    
-			</ul>
+			</ul>		
+					
+             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">       
+		
 			<%
-			if(username==null) {
+			if(username==null && adminName==null) {
 			%>
-			<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+			
 				<li class="nav-item active"><a class="nav-link"
 					href="Login.jsp">Login</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Register</a>
-				</li>
-			</ul>
-			<%} else { %>
+				
 			
-					<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+			<%} else if(adminName!=null) { %>
+			
+					
 					<li class="nav-item active"><a class="nav-link"
-					href="#">Welcome <%=username %></a></li>
+					href="#">Welcome <%=adminName %></a></li>
 					
 				<li class="nav-item active"><a class="nav-link"
 					href="AdminLogout">Logout</a></li>
-					</ul>
+					
+					<%} else  {%>
+					
+					<li class="nav-item active"><a class="nav-link"
+					href="#">Welcome <%=username %></a></li>
+					
+					<li class="nav-item active"><a class="nav-link"
+					href="AdminLogout">Logout</a></li>
+					
 					<%} %>
+					</ul>
+					
 		</div>
 	</nav>
 </header>

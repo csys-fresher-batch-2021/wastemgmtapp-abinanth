@@ -23,7 +23,7 @@ public class UserLoginServlet extends HttpServlet {
 		if(UserLoginService.checkUserLogin(username, password)) {
 			HttpSession session = request.getSession();
 			session.setAttribute("LOGGED_IN_USER", username);
-			response.sendRedirect("SelectRecidencyType.jsp");
+			response.sendRedirect("BillCalculator.jsp");
 
 		} else {
 			String errorMessage="Invalid Login Credentials";

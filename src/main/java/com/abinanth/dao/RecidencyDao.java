@@ -19,7 +19,7 @@ public class RecidencyDao {
 		try {
 
 			connection = ConnectionUtil.getConnection();
-			String sql = "insert into recidency_table(recidencies) values(?)";
+			String sql = "insert into recidency(recidencies) values(?)";
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, addRecidency.getNewRecidency());
 
@@ -39,7 +39,7 @@ public class RecidencyDao {
 		try {
 
 			connection = ConnectionUtil.getConnection();
-			String sql = "select * from recidency_table";
+			String sql = "select * from recidency";
 			pst = connection.prepareStatement(sql);
 			ResultSet rs = pst.executeQuery();
 			while(rs.next()) {
@@ -62,7 +62,7 @@ public class RecidencyDao {
 		try {
 
 			connection = ConnectionUtil.getConnection();
-			String sql = "delete from recidency_table where recidencies=?";
+			String sql = "delete from recidency where recidencies=?";
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, deleteRecidency.getNewRecidency());
 
