@@ -21,9 +21,9 @@ public class BillGeneratorService {
 		}
 		amount = getAmount(year, pay, amount);
 
-		String convert = String.valueOf(amount);
+		
 	
-		return convert;
+		return String.valueOf(amount);
 	}
 
 	public static int getAmount(int year, int pay, int amount) {

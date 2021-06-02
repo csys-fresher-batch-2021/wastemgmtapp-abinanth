@@ -17,23 +17,32 @@ String finalamount=(String)session.getAttribute("amount");
 String recidencyType=(String)session.getAttribute("recidencyType");
 %>
 <table class=" table table-container-fluid">
-
+<h2>Get your bill</h2>
+<thead>
 <tr>
-<td scope="col"><h2>Get your bill</h2></td>
-</tr>
+<th scope="col">Your Recidency Type </th>
 
+<th scope="col">Your Amount</th>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td>
-
-Your recidencyType is :
 <%=recidencyType %>
+
 </td>
 <td>
-Your amount is:
 	Rs.<%=finalamount %>
 </td>
 </tr>
+<tbody>
+
+
+
+
+
+
+
 </tbody></table>
 
 

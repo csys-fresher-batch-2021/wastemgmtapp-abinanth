@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import com.abinanth.model.BillCalculatorModel;
-import com.abinanth.validator.recidencyDetailsValidation;
+import com.abinanth.validator.RecidencyDetailsValidation;
 
 public class RecidencyDetailsValidationTest {
 
@@ -13,7 +13,7 @@ public class RecidencyDetailsValidationTest {
 	public void test() {
 	
 		BillCalculatorModel test=new BillCalculatorModel("7168","shop", "13", "deepam", "irugur", "cbe", "2");
-		boolean correctdetail = recidencyDetailsValidation.isCorrectdetail(test);
+		boolean correctdetail = RecidencyDetailsValidation.isCorrectdetail(test);
 		assertEquals(true,correctdetail);
 	}
 
@@ -21,7 +21,7 @@ public class RecidencyDetailsValidationTest {
 	public void incorrectDetails() {
 	
 		BillCalculatorModel test=new BillCalculatorModel("7168","  ", "13", "  ", "irugur", "cbe", "2");
-		boolean correctdetail = recidencyDetailsValidation.isCorrectdetail(test);
+		boolean correctdetail = RecidencyDetailsValidation.isCorrectdetail(test);
 		assertEquals(false,correctdetail);
 	}
 

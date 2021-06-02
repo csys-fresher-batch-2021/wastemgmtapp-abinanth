@@ -2,13 +2,13 @@ package com.abinanth.validator;
 import com.abinanth.exception.InputMissMatchException;
 import com.abinanth.model.BillCalculatorModel;
 
-public class recidencyDetailsValidation {
-	private recidencyDetailsValidation() {
+public class RecidencyDetailsValidation {
+	private RecidencyDetailsValidation() {
 		
 	}
 	public static boolean isCorrectdetail(BillCalculatorModel addRecidencyDetails) {
 		boolean isValid=true;
-	try {
+	
 			if(!BillCalculatorValidation.recidencyTypeValidation(addRecidencyDetails.getRecidenyType())) {
 
 				isValid = false;
@@ -35,11 +35,7 @@ public class recidencyDetailsValidation {
 			}
 		
 		
-	} catch (InputMissMatchException e) {
-		e.printStackTrace();
-		throw new InputMissMatchException("Enter all details correctly");
-
-	}
+	
 		
 		return isValid;
 	}

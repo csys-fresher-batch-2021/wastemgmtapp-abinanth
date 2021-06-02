@@ -3,11 +3,11 @@ package com.abinanth.services;
 import java.util.List;
 
 import com.abinanth.dao.RecidencyDetailsDao;
-import com.abinanth.exception.InputMissMatchException;
-
+import com.abinanth.exception.ValidationException;
 import com.abinanth.model.BillCalculatorModel;
+import com.abinanth.util.Logger;
 import com.abinanth.validator.ExistingRecidencyValidation;
-import com.abinanth.validator.recidencyDetailsValidation;
+import com.abinanth.validator.RecidencyDetailsValidation;
 
 public class BillCalculatorService {
 	private BillCalculatorService() {
@@ -21,27 +21,32 @@ public class BillCalculatorService {
 		return dao.displayRecidencyDetails();
 
 	}
-	
-
+static Logger log=new Logger();
 	public static boolean addRecidencyDetails(BillCalculatorModel recidencyFeilds) {
 		boolean isValid = false;
 
 		try {
 			boolean existingRecidencyValue = ExistingRecidencyValidation.isExistingRecidencyValue(recidencyFeilds);
-			boolean correctdetail = recidencyDetailsValidation.isCorrectdetail(recidencyFeilds);
-			
-			if (existingRecidencyValue) {
-
-				if (correctdetail) {
-
-					dao.addNewRecidencyDetails(recidencyFeilds);
-					isValid = true;
-
-				}
+			boolean correctdetail = RecidencyDetailsValidation.isCorrectdetail(recidencyFeilds);
+			log.print(existingRecidencyValue);
+			if (!existingRecidencyValue) {
+				
+				throw new ValidationException("Already exists");
+				
 			}
-		} catch (InputMissMatchException e) {
+			log.print(existingRecidencyValue);
+			
+			if( !correctdetail) {
+				throw new ValidationException("Invalid Details");
+			}
+			log.print(correctdetail);
+				dao.addNewRecidencyDetails(recidencyFeilds);
+				isValid = true;
+
+			
+		} catch (Exception e) {
 			e.printStackTrace();
-			throw new InputMissMatchException("Unable to add recidency Detail");
+		
 		}
 
 		return isValid;

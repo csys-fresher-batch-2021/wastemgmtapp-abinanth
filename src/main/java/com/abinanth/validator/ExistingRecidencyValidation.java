@@ -6,6 +6,9 @@ import com.abinanth.dao.RecidencyDetailsDao;
 import com.abinanth.model.BillCalculatorModel;
 
 public class ExistingRecidencyValidation {
+	private ExistingRecidencyValidation() {
+		
+	}
 	public static boolean isExistingRecidencyValue(BillCalculatorModel addRecidencyDetails) {
 		
 		boolean isSame=true;

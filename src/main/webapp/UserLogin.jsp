@@ -27,6 +27,9 @@ String username = (String)session.getAttribute("LOGGED_IN_USER");
 	<button type="submit" class="btn btn-primary">Submit</button>
 	<button  type="reset" class="btn btn-danger">Reset</button>
 	</form>
+	Note:<br>
+	
+	password should be between 8 to 20 characters, at least one numeric and at least one capital letter
 	</main>
 		
 

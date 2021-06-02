@@ -11,8 +11,9 @@
 <title>Select Recidency Type</title>
 </head>
 <body>
-	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="message.jsp"></jsp:include>
 	<h3>Select Recidency Type And City</h3>
+
 	<form action="BillCalculator" method="post">
 	
 		<label>Recidency Type</label> <select name="recidencyType">
