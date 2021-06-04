@@ -12,8 +12,9 @@
 </head>
 <body>
 	<jsp:include page="message.jsp"></jsp:include>
-	<h3>Select Recidency Type And City</h3>
-
+	<main class="container-fluid">
+	<h3>Bill Calculation</h3>
+	
 	<form action="BillCalculator" method="post">
 	
 		<label>Recidency Type</label> <select name="recidencyType">
@@ -42,8 +43,10 @@
 			<label>Enter
 			Number of years You need to pay</label> <input type="text" name="date"
 			min="1" max="3" required><br> 
-		<button type="submit">Generate Bill</button>
+		
+		<button type="submit" class="btn btn-primary">Generate Bill</button>
+		<button  type="reset" class="btn btn-danger">Reset</button>
 	</form>
-
+</main>
 </body>
 </html>

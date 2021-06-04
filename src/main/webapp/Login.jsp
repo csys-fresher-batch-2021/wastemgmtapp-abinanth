@@ -19,7 +19,7 @@ String username = (String)session.getAttribute("LOGGED_IN_USER");
 			out.println("<font color='red'>" + errorMessage + "</font>");
 		}
 		%>
-	<h3> AdminLogin</h3>
+	<h3> Admin Login</h3>
 	<label>User Name</label>
 	<input type="text" id="adminUserName" name="adminUserName"required autofocus><br>
 	<label> Password</label>

@@ -9,6 +9,7 @@ import java.util.List;
 import com.abinanth.model.BillCalculatorModel;
 import com.abinanth.util.ConnectionUtil;
 
+
 public class RecidencyDetailsDao {
 
 	public void addNewRecidencyDetails(BillCalculatorModel recidencyFeilds) {

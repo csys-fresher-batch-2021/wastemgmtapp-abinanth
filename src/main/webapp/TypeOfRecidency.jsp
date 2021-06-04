@@ -16,7 +16,9 @@
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
+		<main class="container-fluid">
 	<table class=" table table-container-fluid">
+	<h2>Recidency Types</h2>
 		<caption>Available Recidency</caption>
 		<thead>
 			<tr>
@@ -51,7 +53,7 @@
 		</tbody>
 	</table>
 	<a href="addRecidency.jsp">Add Recidency</a>
-
+</main>
 </body>
 </html>
 

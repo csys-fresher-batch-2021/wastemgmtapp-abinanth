@@ -1,5 +1,7 @@
 package com.abinanth.validator;
 
+
+
 public class RecidencyStringValidator {
 	private RecidencyStringValidator() {
 
@@ -15,6 +17,7 @@ public class RecidencyStringValidator {
 	public static boolean stringValidation(String username) {
 
 		boolean isValidService = true;
+	
 
 		if (username.length() == 0 || username.trim().equals("")) {
 			isValidService = false;
