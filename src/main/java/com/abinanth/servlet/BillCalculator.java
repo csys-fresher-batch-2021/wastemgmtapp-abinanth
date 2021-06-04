@@ -54,7 +54,7 @@ public class BillCalculator extends HttpServlet {
 				
 				session.setAttribute("amount", amount);
 				session.setAttribute("recidencyType", recidencyType);
-
+				
 				response.sendRedirect("BillGenerator.jsp");
 			} else {
 				String errorMessage="Unable To Add  Input Credentials";

@@ -1,9 +1,9 @@
 package com.abinanth.model;
 
-public class AdminLogin {
+public class UserLoginModel {
 	private String username;
 	private String password;
-	public AdminLogin() {
+	public UserLoginModel() {
 		super();
 	}
 	@Override
@@ -22,7 +22,7 @@ public class AdminLogin {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		AdminLogin other = (AdminLogin) obj;
+		UserLoginModel other = (UserLoginModel) obj;
 		if (password == null) {
 			if (other.password != null)
 				return false;
@@ -35,14 +35,27 @@ public class AdminLogin {
 			return false;
 		return true;
 	}
-	
-
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
 	public String getPassword() {
 		return password;
 	}
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public UserLoginModel(String username, String password) {
+		super();
+		this.username = username;
+		this.password = password;
+	}
+	
+	
+
+	
 		
 
 }

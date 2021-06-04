@@ -26,13 +26,14 @@ String username=(String)session.getAttribute("LOGGED_IN_USER");
 						if(adminName!=null) {%>
 						<li class="nav-item"><a class="nav-link"
 					href="TypeOfRecidency.jsp">Recidency Types</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="displayRecidencyTypes.jsp">Recidency Details</a></li>
+				
 					<%}%>
 					<%if(username!=null){ %>
 					
 						<li class="nav-item active"><a class="nav-link"
 								href="BillCalculator.jsp">Bill Generator</a></li>	
+								<li class="nav-item"><a class="nav-link"
+					href="displayRecidencyTypes.jsp">Recidency Details</a></li>
 								
 					<%} %>
 					
@@ -46,6 +47,7 @@ String username=(String)session.getAttribute("LOGGED_IN_USER");
 			
 				<li class="nav-item active"><a class="nav-link"
 					href="Login.jsp">Login</a></li>
+					
 				
 			
 			<%} else if(adminName!=null) { %>
