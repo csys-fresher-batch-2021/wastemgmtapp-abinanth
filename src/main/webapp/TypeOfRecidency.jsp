@@ -18,8 +18,9 @@
 	<jsp:include page="header.jsp"></jsp:include>
 		<main class="container-fluid">
 	<table class=" table table-container-fluid">
+	<caption>Available Recidency</caption>
 	<h2>Recidency Types</h2>
-		<caption>Available Recidency</caption>
+		
 		<thead>
 			<tr>
 				<th scope="col">S.No</th>
