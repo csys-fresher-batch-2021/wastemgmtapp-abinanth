@@ -9,8 +9,7 @@ import java.util.List;
 import com.abinanth.model.BillCalculatorModel;
 import com.abinanth.util.ConnectionUtil;
 
-
-public class RecidencyDetailsDao {
+public class RecidencyDetailsDAO {
 
 	public void addNewRecidencyDetails(BillCalculatorModel recidencyFeilds) {
 		Connection connection = null;
@@ -20,7 +19,8 @@ public class RecidencyDetailsDao {
 
 			connection = ConnectionUtil.getConnection();
 			if (connection != null) {
-				String sql = "insert into recidencytype(recidency_type,recidency_no,street_name,city_name,district_name,years)values(?,?,?,?,?,?)";
+				String sql = "INSERT INTO recidencytype(recidency_type,recidency_no,street_name,city_name,"
+						+ "district_name,years)VALUES(?,?,?,?,?,?)";
 
 				pst = connection.prepareStatement(sql);
 
@@ -49,7 +49,7 @@ public class RecidencyDetailsDao {
 		try {
 
 			connection = ConnectionUtil.getConnection();
-			String sql = "select * from recidencytype";
+			String sql = "SELECT * FROM recidencytype";
 
 			pst = connection.prepareStatement(sql);
 			ResultSet rs = pst.executeQuery();

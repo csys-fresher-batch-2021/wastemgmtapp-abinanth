@@ -14,17 +14,17 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/AdminLogout")
 public class AdminLogout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     * 
-     */
-    	@Override
-    	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    			throws ServletException, IOException {
-    		HttpSession session = request.getSession();
-    		session.invalidate();
-    		response.sendRedirect("Login.jsp");
-    	}
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 * 
+	 */
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		session.invalidate();
+		response.sendRedirect("Login.jsp");
+	}
 
 }

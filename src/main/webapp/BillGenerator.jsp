@@ -8,47 +8,47 @@
 </head>
 <body>
 
+
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 
 
 		<%
+		String recidencyNo = (String) session.getAttribute("recidencyNo");
 		String finalamount = (String) session.getAttribute("amount");
 		String recidencyType = (String) session.getAttribute("recidencyType");
 		%>
-		<table class=" table table-container-fluid">
-			<caption>Bill is Generated</caption>
-			<h2>Get your bill</h2>
-			<thead>
-				<tr>
-					<th scope="col">Your Recidency Type</th>
+		<form action="DisplayAllDetailsServlet" method="post">
+			<table class=" table table-container-fluid">
 
-					<th scope="col">Your Amount</th>
+				<caption>Bill is Generated</caption>
+				<h2>Get your bill</h2>
+				<thead>
+					<tr>
+						<th scope="col">Your Recidency No</th>
+						<th scope="col">Your Recidency Type</th>
 
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td><%=recidencyType%></td>
-					<td>Rs.<%=finalamount%>
+						<th scope="col">Your Amount</th>
 
-
-					</td>
-
-				</tr>
-			<tbody>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><%=recidencyNo%></td>
+						<td><%=recidencyType%></td>
+						<td>Rs.<%=finalamount%>
 
 
+						</td>
 
 
+					</tr>
+				<tbody>
 
-
-
-			</tbody>
-		</table>
-
-
-
+				</tbody>
+			</table>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
 	</main>
 </body>
 </html>

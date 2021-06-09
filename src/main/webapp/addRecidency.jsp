@@ -11,18 +11,18 @@
 
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
-	<form action="AddRecidencyServlet" method="post">
-		<%
-		String errorMessage = request.getParameter("errorMessage");
-		if (errorMessage != null) {
-			out.println("<font color='red'>" + errorMessage + "</font>");
-		}
-		%>
-		
+		<form action="AddRecidencyServlet" method="post">
+			<%
+			String errorMessage = request.getParameter("errorMessage");
+			if (errorMessage != null) {
+				out.println("<font color='red'>" + errorMessage + "</font>");
+			}
+			%>
 
 
-		<h2>Add Recidency</h2>
-		
+
+			<h2>Add Recidency</h2>
+
 			<label for=" addRecidency">Recidency</label> <input type="text"
 				name="recidency" required>
 			<button type="submit">Submit</button>

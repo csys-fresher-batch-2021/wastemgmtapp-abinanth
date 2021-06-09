@@ -11,7 +11,7 @@ public class RecidencyTypeServiceTest {
 
 	@Test
 	public void addProduct() {
-		RecidencyModel addRecidency=new RecidencyModel("Dying industry");
+		RecidencyModel addRecidency = new RecidencyModel("Dying industry");
 
 		boolean newProductAdded = RecidencyTypeService.addRecidencyType(addRecidency);
 		assertTrue(newProductAdded);
@@ -20,14 +20,14 @@ public class RecidencyTypeServiceTest {
 
 	@Test
 	public void addingExistingRecidency() {
-		
-		RecidencyModel addRecidency=new RecidencyModel("textile");
+
+		RecidencyModel addRecidency = new RecidencyModel("textile");
 		try {
-		boolean existingProductAdded = RecidencyTypeService.addRecidencyType(addRecidency);
-		} catch (InputMissMatchException e){
-		assertEquals("unable to add",e.getMessage());
+			boolean existingProductAdded = RecidencyTypeService.addRecidencyType(addRecidency);
+		} catch (InputMissMatchException e) {
+			assertEquals("unable to add", e.getMessage());
+
+		}
 
 	}
-
-}
 }

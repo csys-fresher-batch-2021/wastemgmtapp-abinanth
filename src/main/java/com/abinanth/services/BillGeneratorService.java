@@ -1,8 +1,23 @@
 package com.abinanth.services;
 
+import com.abinanth.dao.RecidencyDetailsDAO;
+import com.abinanth.model.BillCalculatorModel;
+
 public class BillGeneratorService {
 	private BillGeneratorService() {
 
+	}
+
+	public static String getId() {
+
+		RecidencyDetailsDAO dao = new RecidencyDetailsDAO();
+		String recidencyId = null;
+		for (BillCalculatorModel id : dao.displayRecidencyDetails()) {
+			recidencyId = id.getRecidencyId();
+			
+		}
+
+		return recidencyId;
 	}
 
 	public static String generateBill(String recidencyType, String userYear) {
@@ -10,7 +25,7 @@ public class BillGeneratorService {
 		int year = Integer.parseInt(userYear);
 		int pay = 0;
 		int amount = 0;
-		
+
 		if (recidencyType.equalsIgnoreCase("house")) {
 			pay = 120;
 
@@ -21,8 +36,6 @@ public class BillGeneratorService {
 		}
 		amount = getAmount(year, pay, amount);
 
-		
-	
 		return String.valueOf(amount);
 	}
 

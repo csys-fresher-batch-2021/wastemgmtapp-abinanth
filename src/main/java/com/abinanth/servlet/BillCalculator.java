@@ -23,9 +23,10 @@ import com.abinanth.util.Logger;
 @WebServlet("/BillCalculator")
 public class BillCalculator extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-@Override
+
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException{
+			throws ServletException, IOException {
 		Logger log = new Logger();
 		log.print("############ Bill calculator started###########");
 		String recidencyType = request.getParameter("recidencyType");
@@ -45,29 +46,29 @@ public class BillCalculator extends HttpServlet {
 		boolean flag = BillCalculatorService.addRecidencyDetails(bill);
 		HttpSession session = request.getSession();
 		try {
-			
+
 			if (flag) {
 
 				log.print("Year=" + year + ",recidencyType=" + recidencyType);
 
 				String amount = BillGeneratorService.generateBill(recidencyType, year);
-				
+
 				session.setAttribute("amount", amount);
 				session.setAttribute("recidencyType", recidencyType);
-				
+				session.setAttribute("recidencyNo", recidencyNo);
 				response.sendRedirect("BillGenerator.jsp");
 			} else {
-				String errorMessage="Unable To Add  Input Credentials";
+				String errorMessage = "Unable To Add  Input Credentials";
 				session.setAttribute("errorMessage", errorMessage);
-				response.sendRedirect("BillCalculator.jsp?errorMessage="+errorMessage);
-				
+				response.sendRedirect("BillCalculator.jsp?errorMessage=" + errorMessage);
+
 			}
 
-		} catch (ValidationException| InputMissMatchException e) {
+		} catch (ValidationException | InputMissMatchException e) {
 			e.printStackTrace();
-			
-			response.sendRedirect("BillCalculator.jsp?errorMessage="+e.getMessage());
-			
+
+			response.sendRedirect("BillCalculator.jsp?errorMessage=" + e.getMessage());
+
 		}
 	}
 

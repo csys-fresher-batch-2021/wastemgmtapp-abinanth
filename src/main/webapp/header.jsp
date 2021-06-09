@@ -2,8 +2,8 @@
 <link rel="stylesheet" href="assets/css/fontawesome.min.css">
 <link rel="stylesheet" href="assets/css/style.css">
 <%
-String adminName=(String)session.getAttribute("LOGGED_IN_Admin");
-String username=(String)session.getAttribute("LOGGED_IN_USER");
+String adminName = (String) session.getAttribute("LOGGED_IN_Admin");
+String username = (String) session.getAttribute("LOGGED_IN_USER");
 %>
 <header>
 	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -18,58 +18,71 @@ String username=(String)session.getAttribute("LOGGED_IN_USER");
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 				<li class="nav-item active"><a class="nav-link"
 					href="index.jsp">Home <span class="sr-only">(current)</span></a></li>
-					
-						
-					
-				
-						<% 
-						if(adminName!=null) {%>
-						<li class="nav-item"><a class="nav-link"
+
+
+
+
+				<%
+				if (adminName != null) {
+				%>
+				<li class="nav-item"><a class="nav-link"
 					href="TypeOfRecidency.jsp">Recidency Types</a></li>
-				
-					<%}%>
-					<%if(username!=null){ %>
-					
-						<li class="nav-item active"><a class="nav-link"
-								href="BillCalculator.jsp">Bill Generator</a></li>	
-								<li class="nav-item"><a class="nav-link"
+
+				<%
+				}
+				%>
+				<%
+				if (username != null) {
+				%>
+
+				<li class="nav-item active"><a class="nav-link"
+					href="BillCalculator.jsp">Bill Generator</a></li>
+
+
+				<%
+				}
+				%>
+				<li class="nav-item"><a class="nav-link"
 					href="displayRecidencyTypes.jsp">Recidency Details</a></li>
-								
-					<%} %>
-					
-			</ul>		
-					
-             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">       
-		
-			<%
-			if(username==null && adminName==null) {
-			%>
-			
+			</ul>
+
+			<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+
+				<%
+				if (username == null && adminName == null) {
+				%>
+
 				<li class="nav-item active"><a class="nav-link"
 					href="Login.jsp">Login</a></li>
-					
-				
-			
-			<%} else if(adminName!=null) { %>
-			
-					
-					<li class="nav-item active"><a class="nav-link"
-					href="#">Welcome <%=adminName %></a></li>
-					
+
+
+
+				<%
+				} else if (adminName != null) {
+				%>
+
+
+				<li class="nav-item active"><a class="nav-link" href="#">Welcome
+						<%=adminName%></a></li>
+
 				<li class="nav-item active"><a class="nav-link"
 					href="AdminLogout">Logout</a></li>
-					
-					<%} else  {%>
-					
-					<li class="nav-item active"><a class="nav-link"
-					href="#">Welcome <%=username %></a></li>
-					
-					<li class="nav-item active"><a class="nav-link"
+
+				<%
+				} else {
+				%>
+
+				<li class="nav-item active"><a class="nav-link" href="#">Welcome
+						<%=username%></a></li>
+
+				<li class="nav-item active"><a class="nav-link"
 					href="AdminLogout">Logout</a></li>
-					
-					<%} %>
-					</ul>
-					
+
+				<%
+				}
+				%>
+			</ul>
+
 		</div>
 	</nav>
 </header>

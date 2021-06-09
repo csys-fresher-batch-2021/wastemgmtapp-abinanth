@@ -10,8 +10,7 @@ import com.abinanth.model.RecidencyModel;
 
 import com.abinanth.util.ConnectionUtil;
 
-public class RecidencyDao {
-	
+public class RecidencyDAO {
 
 	public void addRecidency(RecidencyModel addRecidency) {
 		Connection connection = null;
@@ -19,7 +18,7 @@ public class RecidencyDao {
 		try {
 
 			connection = ConnectionUtil.getConnection();
-			String sql = "insert into recidency(recidencies) values(?)";
+			String sql = "INSERT INTO recidency(recidencies) VALUES(?)";
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, addRecidency.getNewRecidency());
 
@@ -39,30 +38,29 @@ public class RecidencyDao {
 		try {
 
 			connection = ConnectionUtil.getConnection();
-			String sql = "select * from recidency";
+			String sql = "SELECT * FROM recidency";
 			pst = connection.prepareStatement(sql);
 			ResultSet rs = pst.executeQuery();
-			while(rs.next()) {
-			String recidencyName = rs.getString("recidencies");
-			RecidencyModel recidency=new RecidencyModel(recidencyName);
-			recidencyList.add(recidency);
+			while (rs.next()) {
+				String recidencyName = rs.getString("recidencies");
+				RecidencyModel recidency = new RecidencyModel(recidencyName);
+				recidencyList.add(recidency);
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
-		}  finally {
+		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
 		return recidencyList;
 	}
 
-	
 	public void deleteRecidency(RecidencyModel deleteRecidency) {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		try {
 
 			connection = ConnectionUtil.getConnection();
-			String sql = "delete from recidency where recidencies=?";
+			String sql = "DELETE FROM recidency WHERE recidencies=?";
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, deleteRecidency.getNewRecidency());
 
@@ -74,6 +72,5 @@ public class RecidencyDao {
 			ConnectionUtil.close(pst, connection);
 		}
 	}
-	
 
 }
