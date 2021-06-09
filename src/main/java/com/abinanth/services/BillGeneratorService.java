@@ -14,7 +14,7 @@ public class BillGeneratorService {
 		String recidencyId = null;
 		for (BillCalculatorModel id : dao.displayRecidencyDetails()) {
 			recidencyId = id.getRecidencyId();
-			break;
+			
 		}
 
 		return recidencyId;

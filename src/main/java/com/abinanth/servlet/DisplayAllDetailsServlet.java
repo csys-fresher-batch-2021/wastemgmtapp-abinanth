@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import com.abinanth.exception.DBException;
 import com.abinanth.model.PaymentModel;
 import com.abinanth.services.PaymentService;
 import com.abinanth.util.Logger;
@@ -26,7 +24,6 @@ public class DisplayAllDetailsServlet extends HttpServlet {
 
 		Logger log = new Logger();
 		HttpSession session = request.getSession();
-		// int finalAmount=0;
 		log.print("############### Display servlet works#################");
 
 		String recidencyNo = (String) session.getAttribute("recidencyNo");
