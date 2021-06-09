@@ -21,6 +21,7 @@
 			String message = (String) session.getAttribute("message");
 			%>
 			<table class=" table table-container-fluid">
+			<caption>Payment</caption>
 				<thead>
 				<h2>Payment</h2>
 				<caption>Payment pending</caption>
