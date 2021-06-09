@@ -2,7 +2,7 @@ package com.abinanth.services;
 
 import java.util.List;
 
-import com.abinanth.dao.RecidencyDao;
+import com.abinanth.dao.RecidencyDAO;
 import com.abinanth.model.RecidencyModel;
 
 public class RecidencyTypeService {
@@ -12,10 +12,9 @@ public class RecidencyTypeService {
 	}
 
 	public static List<RecidencyModel> displayRecidencyType() {
-		RecidencyDao dao = new RecidencyDao();
-		List<RecidencyModel> recidencyList = dao.displayRecidency();
+		RecidencyDAO dao = new RecidencyDAO();
 
-		return recidencyList;
+		return dao.displayRecidency();
 
 	}
 
@@ -23,7 +22,7 @@ public class RecidencyTypeService {
 
 		boolean valid = false;
 		boolean exists = false;
-		RecidencyDao dao = new RecidencyDao();
+		RecidencyDAO dao = new RecidencyDAO();
 		List<RecidencyModel> recidencyTypes = dao.displayRecidency();
 		for (RecidencyModel recidencyModel : recidencyTypes) {
 
@@ -47,7 +46,7 @@ public class RecidencyTypeService {
 
 	public static boolean deleteRecidencyType(RecidencyModel deleteRecidency) {
 		boolean valid = false;
-		RecidencyDao dao = new RecidencyDao();
+		RecidencyDAO dao = new RecidencyDAO();
 		List<RecidencyModel> recidencyType = dao.displayRecidency();
 		for (RecidencyModel recidency : recidencyType) {
 			String deleteRecidency2 = recidency.getNewRecidency();

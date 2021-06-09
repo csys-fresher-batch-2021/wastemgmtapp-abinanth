@@ -11,18 +11,18 @@ public class RecidencyDetailsValidationTest {
 
 	@Test
 	public void test() {
-	
-		BillCalculatorModel test=new BillCalculatorModel("7168","shop", "13", "deepam", "irugur", "cbe", "2");
+
+		BillCalculatorModel test = new BillCalculatorModel("7168", "shop", "13", "deepam", "irugur", "cbe", "2");
 		boolean correctdetail = RecidencyDetailsValidation.isCorrectdetail(test);
-		assertEquals(true,correctdetail);
+		assertEquals(true, correctdetail);
 	}
 
 	@Test
 	public void incorrectDetails() {
-	
-		BillCalculatorModel test=new BillCalculatorModel("7168","  ", "13", "  ", "irugur", "cbe", "2");
+
+		BillCalculatorModel test = new BillCalculatorModel("7168", "  ", "13", "  ", "irugur", "cbe", "2");
 		boolean correctdetail = RecidencyDetailsValidation.isCorrectdetail(test);
-		assertEquals(false,correctdetail);
+		assertEquals(false, correctdetail);
 	}
 
 }

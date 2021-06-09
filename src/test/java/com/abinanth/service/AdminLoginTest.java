@@ -10,23 +10,25 @@ public class AdminLoginTest {
 
 	@Test
 	public void correctAdminDetails() {
-		String username="admin";
-		String userPassword="admin123";
-		boolean isValid=AdminLogin.checkAdminLogin(username, userPassword);
+		String username = "admin";
+		String userPassword = "admin123";
+		boolean isValid = AdminLogin.checkAdminLogin(username, userPassword);
 		assertTrue(isValid);
 	}
+
 	@Test
 	public void inCorrectAdminDetails() {
-		String username="admi";
-		String userPassword="adm";
-		boolean isValid=AdminLogin.checkAdminLogin(username, userPassword);
+		String username = "admi";
+		String userPassword = "adm";
+		boolean isValid = AdminLogin.checkAdminLogin(username, userPassword);
 		assertFalse(isValid);
 	}
+
 	@Test
 	public void inCorrectAdminDetailsWithNumbers() {
-		String username="admi123";
-		String userPassword="adm12";
-		boolean isValid=AdminLogin.checkAdminLogin(username, userPassword);
+		String username = "admi123";
+		String userPassword = "adm12";
+		boolean isValid = AdminLogin.checkAdminLogin(username, userPassword);
 		assertFalse(isValid);
 	}
 

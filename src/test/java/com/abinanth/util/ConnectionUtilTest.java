@@ -11,11 +11,11 @@ public class ConnectionUtilTest {
 
 	@Test
 	public void test() throws ClassNotFoundException, SQLException {
-		Connection connection= ConnectionUtil.getConnection();
-	
-			assertNotNull(connection);
-			ConnectionUtil.close(null, connection);
-		
+		Connection connection = ConnectionUtil.getConnection();
+
+		assertNotNull(connection);
+		ConnectionUtil.close(null, connection);
+
 	}
 
 }

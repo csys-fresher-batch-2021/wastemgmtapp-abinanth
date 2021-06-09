@@ -12,3 +12,12 @@ create table recidency(
 recidency_id serial primary key,
 	recidencies varchar(100) not null unique
 );
+create table payment(
+	recidency_no varchar(100) not null,
+	recidency_type varchar(100) not null,
+	amount varchar(3000) not null,
+	status varchar(100) not null,
+	recidency_id  serial primary key,
+	unique(recidency_no)
+	
+);

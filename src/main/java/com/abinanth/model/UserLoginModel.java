@@ -3,9 +3,11 @@ package com.abinanth.model;
 public class UserLoginModel {
 	private String username;
 	private String password;
+
 	public UserLoginModel() {
 		super();
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -14,6 +16,7 @@ public class UserLoginModel {
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -35,27 +38,27 @@ public class UserLoginModel {
 			return false;
 		return true;
 	}
+
 	public String getUsername() {
 		return username;
 	}
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	public UserLoginModel(String username, String password) {
 		super();
 		this.username = username;
 		this.password = password;
 	}
-	
-	
-
-	
-		
 
 }

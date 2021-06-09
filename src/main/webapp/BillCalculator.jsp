@@ -13,40 +13,39 @@
 <body>
 	<jsp:include page="message.jsp"></jsp:include>
 	<main class="container-fluid">
-	<h3>Bill Calculation</h3>
-	
-	<form action="BillCalculator" method="post">
-	
-		<label>Recidency Type</label> <select name="recidencyType">
-			<option value="">Please select a Recidency</option>
-			<%
-			List<RecidencyModel> recidencyType = RecidencyTypeService.displayRecidencyType();
+		<h3>Bill Calculation</h3>
 
-			for (RecidencyModel recidency : recidencyType) {
-			%>
+		<form action="BillCalculator" method="post">
 
-			<option value="<%=recidency.getNewRecidency()%>">
-
-				<%=recidency.getNewRecidency()%>
+			<label>Recidency Type</label> <select name="recidencyType">
+				<option value="">Please select a Recidency</option>
 				<%
-				}
+				List<RecidencyModel> recidencyType = RecidencyTypeService.displayRecidencyType();
+
+				for (RecidencyModel recidency : recidencyType) {
 				%>
-			</option>
 
-		</select><br> <label>Enter Recidency No</label> <input type="number"
-			name="recidencyNo"  min=1 autofocus required><br>
-			 <label>Enter The Street Name</label> <input type="text" name="streetName" required><br>
+				<option value="<%=recidency.getNewRecidency()%>">
 
-		<label>Enter Your City</label> <input type="text" name="cityName"
-			required><br> <label>Enter Your District</label> <input
-			type="text" name="districtName" required><br> 
-			<label>Enter
-			Number of years You need to pay</label> <input type="number" name="date"
-			min=1 max=3 required><br> 
-		
-		<button type="submit" class="btn btn-primary">Generate Bill</button>
-		<button  type="reset" class="btn btn-danger">Reset</button>
-	</form>
-</main>
+					<%=recidency.getNewRecidency()%>
+					<%
+					}
+					%>
+				</option>
+
+			</select><br> <label>Enter Recidency No</label> <input type="number"
+				name="recidencyNo" min=1 autofocus required><br> <label>Enter
+				The Street Name</label> <input type="text" name="streetName" required><br>
+
+			<label>Enter Your City</label> <input type="text" name="cityName"
+				required><br> <label>Enter Your District</label> <input
+				type="text" name="districtName" required><br> <label>Enter
+				Number of years You need to pay</label> <input type="number" name="date"
+				min=1 max=3 required><br>
+
+			<button type="submit" class="btn btn-primary">Generate Bill</button>
+			<button type="reset" class="btn btn-danger">Reset</button>
+		</form>
+	</main>
 </body>
 </html>
