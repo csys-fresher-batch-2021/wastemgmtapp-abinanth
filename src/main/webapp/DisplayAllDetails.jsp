@@ -21,24 +21,23 @@
 			String message = (String) session.getAttribute("message");
 			%>
 			<table class=" table table-container-fluid">
-			<caption>Payment</caption>
-				<thead>
-				<h2>Payment</h2>
 				<caption>Payment pending</caption>
-				<tr>
-					<th scope="col">USERNAME</th>
-					<th scope="col">Recidency No</th>
-					<th scope="col">Recidency Type</th>
-					<th scope="col">Amount</th>
-				</tr>
-			</thead>
+				<thead>
+					<h2>Payment</h2>
+					<tr>
+						<th scope="col">USERNAME</th>
+						<th scope="col">Recidency No</th>
+						<th scope="col">Recidency Type</th>
+						<th scope="col">Amount</th>
+					</tr>
+				</thead>
 				<tbody>
-				<tr>
-					<td><%=userName%></td>
-					<td><%=recidencyNo%></td>
-					<td><%=recidencyType%></td>
-					<td><%=finalAmount%></td>
-				</tr>
+					<tr>
+						<td><%=userName%></td>
+						<td><%=recidencyNo%></td>
+						<td><%=recidencyType%></td>
+						<td><%=finalAmount%></td>
+					</tr>
 				</tbody>
 			</table>
 			<button type="submit">Pay now</button>

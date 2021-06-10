@@ -47,6 +47,8 @@ public class PaymentModel {
 		this.status = status;
 	}
 
+	
+
 	@Override
 	public String toString() {
 		return "PaymentModel [recidencyNo=" + recidencyNo + ", recidencyType=" + recidencyType + ", amount=" + amount

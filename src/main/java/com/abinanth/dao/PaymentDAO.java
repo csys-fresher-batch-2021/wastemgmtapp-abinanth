@@ -86,4 +86,35 @@ public class PaymentDAO {
 		return paymentStatus;
 	}
 
+	public List<PaymentModel> findRecidecyDetails(String word) {
+		Connection connection = null;
+		PreparedStatement pst = null;
+		List<PaymentModel> find = new ArrayList<>();
+		try {
+
+			connection = ConnectionUtil.getConnection();
+			String sql = "SELECT * FROM payment where status ILIKE ? OR recidency_type ILIKE ?;";
+
+			pst = connection.prepareStatement(sql);
+			pst.setString(1, "%" + word + "%");
+			pst.setString(2, "%" + word + "%");
+
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				String recidencyType = rs.getString("recidency_type");
+				String amount = rs.getString("amount");
+				String recidencyNo = rs.getString("recidency_no");
+				String status = rs.getString("status");
+				PaymentModel pay = new PaymentModel(recidencyNo, recidencyType, amount, status);
+				find.add(pay);
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionUtil.close(pst, connection);
+		}
+		return find;
+
+	}
+
 }

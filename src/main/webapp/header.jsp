@@ -27,7 +27,8 @@ String username = (String) session.getAttribute("LOGGED_IN_USER");
 				%>
 				<li class="nav-item"><a class="nav-link"
 					href="TypeOfRecidency.jsp">Recidency Types</a></li>
-
+				<li class="nav-item"><a class="nav-link"
+					href="SearchRecidencyDetails.jsp">Search Payment Status</a></li>
 				<%
 				}
 				%>
