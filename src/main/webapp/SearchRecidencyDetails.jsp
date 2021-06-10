@@ -26,11 +26,11 @@
 
 		<table class=" table table-container-fluid">
 			<caption>Search</caption>
-			<thead>
-				<th>Recidency No</th>
-				<th>Recidency Name</th>
-				<th>Amount</th>
-				<th>Status</th>
+			<thead><tr>
+				<th scope="col">Recidency No</th>
+				<th scope="col">Recidency Name</th>
+				<th scope="col">Amount</th>
+				<th scope="col">Status</th></tr>
 			</thead>
 			<tbody>
 				<%

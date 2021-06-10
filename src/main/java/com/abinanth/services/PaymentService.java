@@ -53,7 +53,7 @@ public class PaymentService {
 
 	}
 	public static List<PaymentModel> findRecidencyDetails(String word) {
-		List<PaymentModel> search=new ArrayList<>();;
+		List<PaymentModel> search=new ArrayList<>();
 		try {
 			if (RecidencyStringValidator.stringValidation(word)) {
 			search=dao.findRecidecyDetails(word);
