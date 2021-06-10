@@ -43,7 +43,7 @@
 				Number of years You need to pay</label> <input type="number" name="date"
 				min=1 max=3 required><br>
 
-			<button type="submit" class="btn btn-primary">Generate Bill</button>
+			<button type="submit" class="btn btn-primary">Get Bill</button>
 			<button type="reset" class="btn btn-danger">Reset</button>
 		</form>
 	</main>

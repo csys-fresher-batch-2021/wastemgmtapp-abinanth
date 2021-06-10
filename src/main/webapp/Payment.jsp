@@ -19,13 +19,14 @@
 			}
 			%>
 			<table class=" table table-container-fluid">
-			<caption>Payment Status</caption>
-			<thead>
-				<tr>
-					<th scope="col">Username</th>
-					<th scope="col">Final Amount</th>
-					<th scope="col">Status</th>
-				</tr>
+				<caption>Payment Status</caption>
+				<h3>Payment Status</h3>
+				<thead>
+					<tr>
+						<th scope="col">Username</th>
+						<th scope="col">Final Amount</th>
+						<th scope="col">Status</th>
+					</tr>
 				</thead>
 				<tr>
 					<td><%=userName%></td>
