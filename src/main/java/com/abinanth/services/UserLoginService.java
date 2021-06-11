@@ -1,5 +1,7 @@
 package com.abinanth.services;
 
+import com.abinanth.exception.ValidationException;
+
 import com.abinanth.validator.LoginValidation;
 
 public class UserLoginService {
@@ -9,13 +11,14 @@ public class UserLoginService {
 
 	public static boolean addUserLogin(String username, String password) {
 		boolean userValidation = false;
-
 		if (LoginValidation.checkUserName(username) && LoginValidation.checkPassword(password)) {
-
 			userValidation = true;
-		}
-		return userValidation;
 
+		} else {
+			throw new ValidationException("Invalid");
+		}
+
+		return userValidation;
 	}
 
 }

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.abinanth.services.UserLoginService;
+import com.abinanth.util.Logger;
 
 /**
  * Servlet implementation class UserLogin
@@ -22,8 +23,11 @@ public class UserLoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-
-		if (UserLoginService.addUserLogin(username, password)) {
+		
+		boolean flag=UserLoginService.addUserLogin(username,password);
+		Logger log=new Logger();
+		log.print(flag);
+		if (flag) {
 			HttpSession session = request.getSession();
 			session.setAttribute("LOGGED_IN_USER", username);
 			response.sendRedirect("BillCalculator.jsp");

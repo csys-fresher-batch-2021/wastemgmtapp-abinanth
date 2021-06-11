@@ -31,13 +31,17 @@ public class DisplayAllDetailsServlet extends HttpServlet {
 		String finalAmount = (String) session.getAttribute("amount");
 		String recidencyType = (String) session.getAttribute("recidencyType");
 		String status = (String) session.getAttribute("status");
-		PaymentModel payment = new PaymentModel(recidencyNo, recidencyType, finalAmount, status);
+		String username = (String) session.getAttribute("LOGGED_IN_USER");
+
+		log.print(username);
+		PaymentModel payment = new PaymentModel();
 		payment.setRecidencyNo(recidencyNo);
 		payment.setRecidencyType(recidencyType);
 		payment.setAmount(finalAmount);
 		payment.setStatus(status);
-		boolean isCorrect = PaymentService.addPaymentDetails(payment);
+		payment.setUsername(username);
 
+		boolean isCorrect = PaymentService.addPaymentDetails(payment);
 		if (isCorrect) {
 			String message = "Successfully Added";
 			response.sendRedirect("DisplayAllDetails.jsp?message=" + message);
