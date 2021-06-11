@@ -23,7 +23,6 @@ public class PaymentService {
 
 		try {
 
-			
 			dao.addPaymentDetails(newPayment);
 			flag = true;
 
@@ -36,33 +35,44 @@ public class PaymentService {
 		return flag;
 	}
 
-	public static boolean updatePayment(String recidencyNo) {
-		log.print("Update");
-		boolean flag = false;
-		
-		for (PaymentModel status : dao.displayPaymentDetails()) {
-			if (recidencyNo.equals(status.getRecidencyNo())) {
-				dao.updatePayment(recidencyNo);
-				flag = true;
-				log.print("Updated the status");
+	public static boolean updatePayment(int paymentId) {
 
-			}
+		boolean flag = false;
+		try {
+
+			dao.updatePayment(paymentId);
+			flag = true;
+			log.print("Updated the status");
+
+		} catch (DBException e) {
+			throw new DBException("Cannot Update");
 
 		}
 		return flag;
 
 	}
+
 	public static List<PaymentModel> findRecidencyDetails(String word) {
-		List<PaymentModel> search=new ArrayList<>();
+		List<PaymentModel> search = new ArrayList<>();
 		try {
 			if (RecidencyStringValidator.stringValidation(word)) {
-			search=dao.findRecidecyDetails(word);
+				search = dao.findRecidecyDetails(word);
+				log.print(search);
 			}
-			
-		} catch(DBException | ValidationException e) {
+
+		} catch (DBException | ValidationException e) {
 			throw new ValidationException(e.getMessage());
 		}
 		return search;
-		
+
+	}
+
+	public static List<PaymentModel> getAllPaymentDetails() {
+		return dao.displayPaymentDetails();
+	}
+
+	public static List<PaymentModel> getUserBills(String userName) {
+
+		return dao.findMyBills(userName);
 	}
 }

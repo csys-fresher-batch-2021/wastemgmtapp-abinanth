@@ -15,6 +15,12 @@
 	<main class="container-fluid">
 		<h3>Bill Calculation</h3>
 
+		<%
+		String message = request.getParameter("message");
+		if (message != null) {
+			out.println("<font color='green'>" + message + "</font>");
+		}
+		%>
 		<form action="BillCalculator" method="post">
 
 			<label>Recidency Type</label> <select name="recidencyType">

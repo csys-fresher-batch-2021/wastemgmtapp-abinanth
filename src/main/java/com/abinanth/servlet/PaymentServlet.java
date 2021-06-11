@@ -6,9 +6,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.abinanth.services.PaymentService;
+import com.abinanth.util.Logger;
 
 /**
  * Servlet implementation class PaymentServlet
@@ -18,16 +18,17 @@ public class PaymentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		Logger log = new Logger();
 
-		HttpSession session = request.getSession();
-		String recidencyNo = (String) session.getAttribute("recidencyNo");
+		int paymentId = Integer.parseInt(request.getParameter("paymentId"));
 
-		boolean updatePayment = PaymentService.updatePayment(recidencyNo);
+		boolean updatePayment = PaymentService.updatePayment(paymentId);
+		log.print(updatePayment);
 		if (updatePayment) {
 
-			response.sendRedirect("Payment.jsp");
+			response.sendRedirect("MyBillServlet");
 		} else {
 			String message = "Unable to process";
 			response.sendRedirect("BillGenerator.jsp?message" + message);

@@ -17,7 +17,7 @@ create table payment(
 	recidency_type varchar(100) not null,
 	amount varchar(3000) not null,
 	status varchar(100) not null,
-	recidency_id  serial primary key,
+	payment_id  serial primary key,
 	unique(recidency_no)
 	
 );

@@ -10,23 +10,35 @@ import java.util.List;
 import com.abinanth.model.PaymentModel;
 
 import com.abinanth.util.ConnectionUtil;
+import com.abinanth.util.Logger;
 
 public class PaymentDAO {
+	
+	private static final String RECIDENCY_NO="recidency_no";
+	private static final String RECIDENCY_TYPE="recidency_type";
+	private static final String AMOUNT="amount";
+	private static final String STATUS="status";
+	private static final String USER_NAME="user_name";
+	private static final String PAYMENT_ID="payment_id";
 
 	public void addPaymentDetails(PaymentModel pay) {
 		Connection connection = null;
 		PreparedStatement pst = null;
-
+		Logger log = new Logger();
+		log.print(pay.getUsername());
 		try {
 
 			connection = ConnectionUtil.getConnection();
 			if (connection != null) {
-				String sql = "INSERT INTO payment(recidency_no,recidency_type,amount,status) VALUES(?,?,?,'PENDING')";
+				String sql = "INSERT INTO payment(recidency_no,recidency_type,amount,status,user_name) "
+						+ "VALUES(?,?,?,'PENDING',?)";
 
 				pst = connection.prepareStatement(sql);
 				pst.setString(1, pay.getRecidencyNo());
+
 				pst.setString(2, pay.getRecidencyType());
 				pst.setString(3, pay.getAmount());
+				pst.setString(4, pay.getUsername());
 
 				pst.executeUpdate();
 
@@ -39,16 +51,16 @@ public class PaymentDAO {
 
 	}
 
-	public void updatePayment(String recidencyNo) {
+	public void updatePayment(int paymentId) {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		try {
 
 			connection = ConnectionUtil.getConnection();
-			String sql = "UPDATE payment SET status='PAID' WHERE recidency_no=?";
+			String sql = "UPDATE payment SET status='PAID' WHERE payment_id=?";
 			pst = connection.prepareStatement(sql);
 
-			pst.setString(1, recidencyNo);
+			pst.setInt(1, paymentId);
 
 			pst.executeUpdate();
 
@@ -71,12 +83,14 @@ public class PaymentDAO {
 			pst = connection.prepareStatement(sql);
 			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
-				String recidencyType = rs.getString("recidency_type");
-				String amount = rs.getString("amount");
-				String recidencyNo = rs.getString("recidency_no");
-				String status = rs.getString("status");
-				PaymentModel pay = new PaymentModel(recidencyType, amount, recidencyNo, status);
-				paymentStatus.add(pay);
+				String recidencyType = rs.getString(RECIDENCY_TYPE);
+				String amount = rs.getString(AMOUNT);
+				String recidencyNo = rs.getString(RECIDENCY_NO);
+				String status = rs.getString(STATUS);
+				String username = rs.getString(USER_NAME);
+				int paymentId = rs.getInt(PAYMENT_ID);
+				PaymentModel paymentDetails = new PaymentModel(recidencyNo, recidencyType, amount, status, username, paymentId);
+				paymentStatus.add(paymentDetails);
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
@@ -101,11 +115,13 @@ public class PaymentDAO {
 
 			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
-				String recidencyType = rs.getString("recidency_type");
-				String amount = rs.getString("amount");
-				String recidencyNo = rs.getString("recidency_no");
-				String status = rs.getString("status");
-				PaymentModel pay = new PaymentModel(recidencyNo, recidencyType, amount, status);
+				String recidencyType = rs.getString(RECIDENCY_TYPE);
+				String amount = rs.getString(AMOUNT);
+				String recidencyNo = rs.getString(RECIDENCY_NO);
+				String status = rs.getString(STATUS);
+				String username = rs.getString(USER_NAME);
+				int paymentId = rs.getInt(PAYMENT_ID);
+				PaymentModel pay = new PaymentModel(recidencyNo, recidencyType, amount, status, username, paymentId);
 				find.add(pay);
 			}
 		} catch (ClassNotFoundException | SQLException e) {
@@ -114,6 +130,37 @@ public class PaymentDAO {
 			ConnectionUtil.close(pst, connection);
 		}
 		return find;
+
+	}
+
+	public List<PaymentModel> findMyBills(String username) {
+		Connection connection = null;
+		PreparedStatement pst = null;
+		List<PaymentModel> billList = new ArrayList<>();
+		try {
+
+			connection = ConnectionUtil.getConnection();
+			String sql = "SELECT*FROM payment WHERE user_name=?";
+
+			pst = connection.prepareStatement(sql);
+			pst.setString(1, username);
+
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				String recidencyType = rs.getString(RECIDENCY_TYPE);
+				String amount = rs.getString(AMOUNT);
+				String recidencyNo = rs.getString(RECIDENCY_NO);
+				String status = rs.getString(STATUS);
+				int paymentId = rs.getInt(PAYMENT_ID);
+				PaymentModel bill = new PaymentModel(recidencyNo, recidencyType, amount, status, username, paymentId);
+				billList.add(bill);
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionUtil.close(pst, connection);
+		}
+		return billList;
 
 	}
 

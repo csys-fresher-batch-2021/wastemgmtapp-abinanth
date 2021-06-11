@@ -38,7 +38,8 @@ String username = (String) session.getAttribute("LOGGED_IN_USER");
 
 				<li class="nav-item active"><a class="nav-link"
 					href="BillCalculator.jsp">Bill Generator</a></li>
-
+<li class="nav-item active"><a class="nav-link"
+					href="MyBillServlet">My Bills</a></li>
 
 				<%
 				}

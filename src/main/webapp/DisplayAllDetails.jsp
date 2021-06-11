@@ -1,3 +1,5 @@
+<%@page import="com.abinanth.model.PaymentModel"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -12,35 +14,53 @@
 		<form action="PaymentServlet" method="post">
 			<%
 			String userName = (String) session.getAttribute("LOGGED_IN_USER");
-			String recidencyNo = (String) session.getAttribute("recidencyNo");
-
-			String recidencyType = (String) session.getAttribute("recidencyType");
-			String finalAmount = (String) session.getAttribute("amount");
+			List<PaymentModel> myBills = (List<PaymentModel>) request.getAttribute("bills");
 
 			String status = (String) session.getAttribute("status");
 			String message = (String) session.getAttribute("message");
 			%>
 			<table class=" table table-container-fluid">
-				<caption>Payment pending</caption>
+				<caption>Payment Status</caption>
 				<thead>
 					<h2>Payment</h2>
 					<tr>
 						<th scope="col">USERNAME</th>
+						<th scope="col">PaymentId</th>
 						<th scope="col">Recidency No</th>
+
 						<th scope="col">Recidency Type</th>
 						<th scope="col">Amount</th>
+						<th scope="col">Status</th>
 					</tr>
 				</thead>
+
 				<tbody>
+					<%
+					for (PaymentModel bill : myBills) {
+					%>
 					<tr>
-						<td><%=userName%></td>
-						<td><%=recidencyNo%></td>
-						<td><%=recidencyType%></td>
-						<td><%=finalAmount%></td>
+						<td><%=bill.getUsername()%></td>
+						<td><%=bill.getPaymentId()%></td>
+						<td><%=bill.getRecidencyNo()%></td>
+						<td><%=bill.getRecidencyType()%></td>
+						<td><%=bill.getAmount()%></td>
+
+						<td><%=bill.getStatus()%></td>
+						<%
+						if (bill.getStatus().equalsIgnoreCase("PENDING")) {
+						%>
+						<td><a
+							href="PaymentServlet?paymentId=<%=bill.getPaymentId()%>">Pay
+								now</a></td>
+
 					</tr>
+					<%
+					}
+					}
+					%>
 				</tbody>
 			</table>
-			<button type="submit">Pay now</button>
+
 		</form>
 	</main>
 </body>
