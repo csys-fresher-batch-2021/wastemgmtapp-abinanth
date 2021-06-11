@@ -11,9 +11,7 @@ import com.abinanth.model.UserLoginModel;
 import com.abinanth.util.ConnectionUtil;
 
 public class UsersDAO {
-	public UsersDAO() {
-		
-	}
+	
 	public void addUser(UserLoginModel user) {
 		Connection connection = null;
 		PreparedStatement pst = null;

@@ -57,6 +57,7 @@ public class PaymentService {
 		try {
 			if (RecidencyStringValidator.stringValidation(word)) {
 				search = dao.findRecidecyDetails(word);
+				log.print(search);
 			}
 
 		} catch (DBException | ValidationException e) {

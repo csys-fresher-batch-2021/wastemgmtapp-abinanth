@@ -24,16 +24,15 @@ public class MyBillServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session=request.getSession();
-		String username=(String)session.getAttribute("LOGGED_IN_USER");
-		List<PaymentModel> myBill=PaymentService.getUserBills(username);
+		HttpSession session = request.getSession();
+		String username = (String) session.getAttribute("LOGGED_IN_USER");
+		List<PaymentModel> myBill = PaymentService.getUserBills(username);
 		request.setAttribute("bills", myBill);
-		RequestDispatcher dispacher=request.getRequestDispatcher("DisplayAllDetails.jsp");
+		RequestDispatcher dispacher = request.getRequestDispatcher("DisplayAllDetails.jsp");
 		dispacher.forward(request, response);
 	}
-	
 
 }

@@ -13,6 +13,13 @@ import com.abinanth.util.ConnectionUtil;
 import com.abinanth.util.Logger;
 
 public class PaymentDAO {
+	
+	private static final String RECIDENCY_NO="recidency_no";
+	private static final String RECIDENCY_TYPE="recidency_type";
+	private static final String AMOUNT="amount";
+	private static final String STATUS="status";
+	private static final String USER_NAME="user_name";
+	private static final String PAYMENT_ID="payment_id";
 
 	public void addPaymentDetails(PaymentModel pay) {
 		Connection connection = null;
@@ -76,14 +83,14 @@ public class PaymentDAO {
 			pst = connection.prepareStatement(sql);
 			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
-				String recidencyType = rs.getString("recidency_type");
-				String amount = rs.getString("amount");
-				String recidencyNo = rs.getString("recidency_no");
-				String status = rs.getString("status");
-				String username = rs.getString("user_name");
-				int paymentId = rs.getInt("payment_id");
-				PaymentModel pay = new PaymentModel(recidencyNo, recidencyType, amount, status, username, paymentId);
-				paymentStatus.add(pay);
+				String recidencyType = rs.getString(RECIDENCY_TYPE);
+				String amount = rs.getString(AMOUNT);
+				String recidencyNo = rs.getString(RECIDENCY_NO);
+				String status = rs.getString(STATUS);
+				String username = rs.getString(USER_NAME);
+				int paymentId = rs.getInt(PAYMENT_ID);
+				PaymentModel paymentDetails = new PaymentModel(recidencyNo, recidencyType, amount, status, username, paymentId);
+				paymentStatus.add(paymentDetails);
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
@@ -108,12 +115,12 @@ public class PaymentDAO {
 
 			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
-				String recidencyType = rs.getString("recidency_type");
-				String amount = rs.getString("amount");
-				String recidencyNo = rs.getString("recidency_no");
-				String status = rs.getString("status");
-				String username = rs.getString("user_name");
-				int paymentId = rs.getInt("payment_id");
+				String recidencyType = rs.getString(RECIDENCY_TYPE);
+				String amount = rs.getString(AMOUNT);
+				String recidencyNo = rs.getString(RECIDENCY_NO);
+				String status = rs.getString(STATUS);
+				String username = rs.getString(USER_NAME);
+				int paymentId = rs.getInt(PAYMENT_ID);
 				PaymentModel pay = new PaymentModel(recidencyNo, recidencyType, amount, status, username, paymentId);
 				find.add(pay);
 			}
@@ -129,7 +136,7 @@ public class PaymentDAO {
 	public List<PaymentModel> findMyBills(String username) {
 		Connection connection = null;
 		PreparedStatement pst = null;
-		List<PaymentModel> bills = new ArrayList<>();
+		List<PaymentModel> billList = new ArrayList<>();
 		try {
 
 			connection = ConnectionUtil.getConnection();
@@ -140,20 +147,20 @@ public class PaymentDAO {
 
 			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
-				String recidencyType = rs.getString("recidency_type");
-				String amount = rs.getString("amount");
-				String recidencyNo = rs.getString("recidency_no");
-				String status = rs.getString("status");
-				int paymentId = rs.getInt("payment_id");
+				String recidencyType = rs.getString(RECIDENCY_TYPE);
+				String amount = rs.getString(AMOUNT);
+				String recidencyNo = rs.getString(RECIDENCY_NO);
+				String status = rs.getString(STATUS);
+				int paymentId = rs.getInt(PAYMENT_ID);
 				PaymentModel bill = new PaymentModel(recidencyNo, recidencyType, amount, status, username, paymentId);
-				bills.add(bill);
+				billList.add(bill);
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
-		return bills;
+		return billList;
 
 	}
 
