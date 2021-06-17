@@ -9,12 +9,12 @@ import com.abinanth.services.RecidencyTypeService;
 
 public class RecidencyTypeServiceTest {
 
-	@Test
+	
 	public void addProduct() {
-		RecidencyModel addRecidency = new RecidencyModel("Dying industry");
+		RecidencyModel addRecidency = new RecidencyModel("");
 
 		boolean newProductAdded = RecidencyTypeService.addRecidencyType(addRecidency);
-		assertTrue(newProductAdded);
+		assertFalse(newProductAdded);
 
 	}
 
