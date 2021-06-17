@@ -1,7 +1,9 @@
 package com.abinanth.validator;
 
-public class BillCalculatorValidation {
-	private BillCalculatorValidation() {
+
+
+public class BillCalculatorValidator {
+	private BillCalculatorValidator() {
 
 	}
 
@@ -15,5 +17,6 @@ public class BillCalculatorValidation {
 
 		return isValidService;
 	}
+	
 
 }

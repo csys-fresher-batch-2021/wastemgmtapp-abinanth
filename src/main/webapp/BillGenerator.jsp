@@ -14,6 +14,7 @@
 
 
 		<%
+		String username = (String) session.getAttribute("LOGGED_IN_USER");
 		String recidencyNo = (String) session.getAttribute("recidencyNo");
 		String finalamount = (String) session.getAttribute("amount");
 		String recidencyType = (String) session.getAttribute("recidencyType");

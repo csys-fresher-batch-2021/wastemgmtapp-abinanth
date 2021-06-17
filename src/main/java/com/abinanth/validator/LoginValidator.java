@@ -3,15 +3,15 @@ package com.abinanth.validator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class LoginValidation {
-	private LoginValidation() {
+public class LoginValidator {
+	private LoginValidator() {
 
 	}
 
 	public static boolean checkUserName(String username) {
 		boolean isValid = false;
 		String regexPattern = "^[a-zA-Z]{3,12}";
-		if (LoginValidation.validatedUserName(username)) {
+		if (LoginValidator.validatedUserName(username)) {
 
 			Pattern pattern = Pattern.compile(regexPattern);
 			Matcher match = pattern.matcher(username);

@@ -11,8 +11,11 @@ import com.abinanth.model.RecidencyModel;
 import com.abinanth.util.ConnectionUtil;
 
 public class RecidencyDAO {
+	/*
+	 * this method is used to insert a recidency details into recidencytype database
+	 */
 
-	public void addRecidency(RecidencyModel addRecidency) {
+	public void save(RecidencyModel addRecidency) {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		try {
@@ -30,8 +33,10 @@ public class RecidencyDAO {
 			ConnectionUtil.close(pst, connection);
 		}
 	}
-
-	public List<RecidencyModel> displayRecidency() {
+/*
+ * this method is used to get all the date from recidencytype database
+ */
+	public List<RecidencyModel> findAll() {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		List<RecidencyModel> recidencyList = new ArrayList<>();
@@ -53,8 +58,11 @@ public class RecidencyDAO {
 		}
 		return recidencyList;
 	}
+	/*
+	 * this method is used to delete a recidency type from recidency type database
+	 */
 
-	public void deleteRecidency(RecidencyModel deleteRecidency) {
+	public void deleteByRecidencyType(RecidencyModel deleteRecidency) {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		try {

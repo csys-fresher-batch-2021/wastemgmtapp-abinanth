@@ -19,7 +19,7 @@
 			}
 			%>
 			<%
-			String userName = (String) session.getAttribute("LOGGED_IN_USER");
+			String userName = (String) session.getAttribute("username");
 			%>
 			<h2>Search by Status or Recidency Name</h2>
 			<label for="text">Search</label><input type="text" name="search"
@@ -49,7 +49,7 @@
 					<td><%=word.getUsername()%></td>
 					<td><%=word.getRecidencyNo()%></td>
 					<td><%=word.getRecidencyType()%></td>
-					<td><%=word.getAmount()%></td>
+					<td>Rs.<%=word.getAmount()%></td>
 					<td><%=word.getStatus()%></td>
 				</tr>
 				<%

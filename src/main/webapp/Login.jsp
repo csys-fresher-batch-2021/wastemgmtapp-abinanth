@@ -11,7 +11,7 @@
 	<main class="container-fluid">
 		<form action="AdminLoginServlet" method="get">
 			<%
-			String username = (String) session.getAttribute("LOGGED_IN_USER");
+			String username = (String) session.getAttribute("username");
 			%>
 			<%
 			String errorMessage = request.getParameter("errorMessage");
@@ -20,7 +20,7 @@
 			}
 			%>
 			<h3>Admin Login</h3>
-			<label>User Name</label> <input type="text" id="adminUserName"
+			<label>Admin Name</label> <input type="text" id="adminUserName"
 				name="adminUserName" required autofocus><br> <label>
 				Password</label> <input type="password" id="adminPassword"
 				name="adminPassword" required><br>

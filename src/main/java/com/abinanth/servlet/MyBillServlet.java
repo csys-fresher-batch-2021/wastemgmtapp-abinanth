@@ -13,12 +13,14 @@ import javax.servlet.http.HttpSession;
 
 import com.abinanth.model.PaymentModel;
 import com.abinanth.services.PaymentService;
+import com.abinanth.util.Logger;
 
 /**
  * Servlet implementation class MyBillServlet
  */
 @WebServlet("/MyBillServlet")
 public class MyBillServlet extends HttpServlet {
+	Logger log = new Logger();
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -28,7 +30,8 @@ public class MyBillServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String username = (String) session.getAttribute("LOGGED_IN_USER");
+		String username = (String) session.getAttribute("username");
+		
 		List<PaymentModel> myBill = PaymentService.getUserBills(username);
 		request.setAttribute("bills", myBill);
 		RequestDispatcher dispacher = request.getRequestDispatcher("DisplayAllDetails.jsp");

@@ -11,8 +11,8 @@ public class BillGeneratorTest {
 	@Test
 	public void test() {
 
-		String generateBill = BillGeneratorService.generateBill("house", "1");
-		assertEquals("120", generateBill);
+		double generateBill = BillGeneratorService.generateBill("house", 1);
+		assertEquals(120.0, generateBill);
 	}
 
 }

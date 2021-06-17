@@ -22,8 +22,9 @@
 		}
 		%>
 		<form action="BillCalculator" method="post">
-
-			<label>Recidency Type</label> <select name="recidencyType">
+			<label>Enter Name</label> <input type="text" name="username"
+				autofocus required><br> <label>Recidency Type</label> <select
+				name="recidencyType">
 				<option value="">Please select a Recidency</option>
 				<%
 				List<RecidencyModel> recidencyType = RecidencyTypeService.displayRecidencyType();
@@ -40,7 +41,7 @@
 				</option>
 
 			</select><br> <label>Enter Recidency No</label> <input type="number"
-				name="recidencyNo" min=1 autofocus required><br> <label>Enter
+				name="recidencyNo" min=1 required><br> <label>Enter
 				The Street Name</label> <input type="text" name="streetName" required><br>
 
 			<label>Enter Your City</label> <input type="text" name="cityName"

@@ -2,18 +2,23 @@ package com.abinanth.model;
 
 public class BillCalculatorModel {
 
-	public BillCalculatorModel() {
-		super();
-
-	}
-
+	
+private String userName;
+	private int recidencyId;
 	private String recidenyType;
-	private String recidencyNo;
+	private int recidencyNo;
 	private String streetName;
 	private String cityName;
 	private String district;
-	private String year;
-	private String recidencyId;
+	private int year;
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
 	public String getRecidenyType() {
 		return recidenyType;
@@ -23,11 +28,11 @@ public class BillCalculatorModel {
 		this.recidenyType = recidenyType;
 	}
 
-	public String getRecidencyNo() {
+	public int getRecidencyNo() {
 		return recidencyNo;
 	}
 
-	public void setRecidencyNo(String recidencyNo) {
+	public void setRecidencyNo(int recidencyNo) {
 		this.recidencyNo = recidencyNo;
 	}
 
@@ -55,32 +60,28 @@ public class BillCalculatorModel {
 		this.district = district;
 	}
 
-	public String getYear() {
+	public int getYear() {
 		return year;
 	}
 
-	public void setYear(String year) {
+	public void setYear(int year) {
 		this.year = year;
 	}
 
-	public String getRecidencyId() {
+	public int getRecidencyId() {
 		return recidencyId;
 	}
 
-	public void setRecidencyId(String recidencyId) {
+	public void setRecidencyId(int recidencyId) {
 		this.recidencyId = recidencyId;
 	}
 
-	@Override
-	public String toString() {
-		return "SelectRecidencyTypeModel [recidenyType=" + recidenyType + ", recidencyNo=" + recidencyNo
-				+ ", streetName=" + streetName + ", cityName=" + cityName + ", district=" + district + ", year=" + year
-				+ ", recidencyId=" + recidencyId + "]";
-	}
 
-	public BillCalculatorModel(String recidenyType, String recidencyNo, String streetName, String cityName,
-			String district, String year, String recidencyId) {
+
+	public BillCalculatorModel(String userName,String recidenyType, int recidencyNo, String streetName, String cityName,
+			String district, int year, int recidencyId) {
 		super();
+		this.userName=userName;
 		this.recidenyType = recidenyType;
 		this.recidencyNo = recidencyNo;
 		this.streetName = streetName;
@@ -89,4 +90,18 @@ public class BillCalculatorModel {
 		this.year = year;
 		this.recidencyId = recidencyId;
 	}
+
+
+
+
+	
+
+	@Override
+	public String toString() {
+		return "BillCalculatorModel [userName=" + userName + ", recidencyId=" + recidencyId + ", recidenyType="
+				+ recidenyType + ", recidencyNo=" + recidencyNo + ", streetName=" + streetName + ", cityName="
+				+ cityName + ", district=" + district + ", year=" + year + "]";
+	}
+	
+
 }
