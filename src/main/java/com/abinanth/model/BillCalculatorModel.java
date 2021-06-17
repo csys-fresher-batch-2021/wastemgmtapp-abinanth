@@ -96,6 +96,10 @@ private String userName;
 
 	
 
+	public BillCalculatorModel() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public String toString() {
 		return "BillCalculatorModel [userName=" + userName + ", recidencyId=" + recidencyId + ", recidenyType="
