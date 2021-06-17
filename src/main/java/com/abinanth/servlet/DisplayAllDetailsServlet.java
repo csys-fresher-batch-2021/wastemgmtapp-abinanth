@@ -26,12 +26,12 @@ public class DisplayAllDetailsServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		log.print("############### Display servlet works#################");
 
-		String recidencyNo = (String) session.getAttribute("recidencyNo");
+		int recidencyNo = Integer.parseInt( (String) session.getAttribute("recidencyNo"));
 		log.print(recidencyNo);
-		String finalAmount = (String) session.getAttribute("amount");
+		int finalAmount =Integer.parseInt( (String) session.getAttribute("amount"));
 		String recidencyType = (String) session.getAttribute("recidencyType");
 		String status = (String) session.getAttribute("status");
-		String username = (String) session.getAttribute("LOGGED_IN_USER");
+		String username = (String) session.getAttribute("username");
 
 		log.print(username);
 		PaymentModel payment = new PaymentModel();
@@ -39,7 +39,9 @@ public class DisplayAllDetailsServlet extends HttpServlet {
 		payment.setRecidencyType(recidencyType);
 		payment.setAmount(finalAmount);
 		payment.setStatus(status);
+		payment.setTotalAmount(finalAmount);
 		payment.setUsername(username);
+	
 
 		boolean isCorrect = PaymentService.addPaymentDetails(payment);
 		if (isCorrect) {

@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import com.abinanth.validator.LoginValidation;
+import com.abinanth.validator.LoginValidator;
 
 public class UserLoginServiceTest {
 
@@ -12,14 +12,14 @@ public class UserLoginServiceTest {
 	public void correctUserName() {
 		String username = "abinanth";
 
-		boolean usernameTest = LoginValidation.checkUserName(username);
+		boolean usernameTest = LoginValidator.checkUserName(username);
 		assertTrue(usernameTest);
 	}
 
 	@Test
 	public void wrongCorrectPassword() {
 		String password = "  ";
-		boolean addUserLogin = LoginValidation.checkPassword(password);
+		boolean addUserLogin = LoginValidator.checkPassword(password);
 		assertFalse(addUserLogin);
 	}
 
@@ -27,7 +27,7 @@ public class UserLoginServiceTest {
 	public void inCorrectUserName() {
 		String username = "abinanth11";
 
-		boolean usernameTest = LoginValidation.checkUserName(username);
+		boolean usernameTest = LoginValidator.checkUserName(username);
 		assertFalse(usernameTest);
 	}
 
@@ -35,7 +35,7 @@ public class UserLoginServiceTest {
 	public void correctPassword() {
 		String password = "Haicoimbatore1";
 
-		boolean checkpassword = LoginValidation.checkPassword(password);
+		boolean checkpassword = LoginValidator.checkPassword(password);
 		assertTrue(checkpassword);
 	}
 

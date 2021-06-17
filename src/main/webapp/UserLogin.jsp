@@ -11,7 +11,7 @@
 	<main class="container-fluid">
 		<form action="UserLoginServlet" method="post">
 			<%
-			String username = (String) session.getAttribute("LOGGED_IN_USER");
+			String username = (String) session.getAttribute("username");
 			%>
 			<%
 			String errorMessage = request.getParameter("errorMessage");

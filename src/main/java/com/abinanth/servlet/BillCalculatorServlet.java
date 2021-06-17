@@ -22,22 +22,24 @@ import com.abinanth.util.Logger;
  * Servlet implementation class SelectRecidencyType
  */
 @WebServlet("/BillCalculator")
-public class BillCalculator extends HttpServlet {
+public class BillCalculatorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Logger log = new Logger();
-		log.print("############ Bill calculator started###########");
+
+		String username = request.getParameter("username");
 		String recidencyType = request.getParameter("recidencyType");
-		String recidencyNo = request.getParameter("recidencyNo");
+		int recidencyNo = Integer.parseInt(request.getParameter("recidencyNo"));
 		String streetName = request.getParameter("streetName");
 		String cityName = request.getParameter("cityName");
 		String district = request.getParameter("districtName");
-		String year = request.getParameter("date");
+		int year = Integer.parseInt(request.getParameter("date"));
 
 		BillCalculatorModel bill = new BillCalculatorModel();
+		bill.setUserName(username);
 		bill.setRecidenyType(recidencyType);
 		bill.setRecidencyNo(recidencyNo);
 		bill.setStreetName(streetName);
@@ -47,22 +49,22 @@ public class BillCalculator extends HttpServlet {
 
 		boolean flag = BillCalculatorService.addRecidencyDetails(bill);
 		HttpSession session = request.getSession();
-		String amount = null;
+		double amount = 0;
 		try {
 
 			if (flag) {
 				log.print("Year=" + year + ",recidencyType=" + recidencyType);
 				amount = BillGeneratorService.generateBill(recidencyType, year);
-				session.setAttribute("amount", amount);
-				session.setAttribute("recidencyType", recidencyType);
-				session.setAttribute("recidencyNo", recidencyNo);
+				log.print("servlet Amount" + amount);
+
 				PaymentModel payment = new PaymentModel();
+				payment.setUsername(username);
 				payment.setRecidencyNo(recidencyNo);
 				payment.setRecidencyType(recidencyType);
 				payment.setAmount(amount);
-				String username = (String) session.getAttribute("LOGGED_IN_USER");
-				payment.setUsername(username);
+
 				boolean isCorrect = PaymentService.addPaymentDetails(payment);
+
 				log.print(isCorrect);
 				String message = "Bill Generated Successfully";
 				response.sendRedirect("BillCalculator.jsp?message=" + message);

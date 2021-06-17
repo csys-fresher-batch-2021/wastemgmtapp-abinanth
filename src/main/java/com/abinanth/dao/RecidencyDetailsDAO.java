@@ -10,8 +10,11 @@ import com.abinanth.model.BillCalculatorModel;
 import com.abinanth.util.ConnectionUtil;
 
 public class RecidencyDetailsDAO {
+	/*
+	 * this method is used to add recidency details of respected user
+	 */
 
-	public void addNewRecidencyDetails(BillCalculatorModel recidencyFeilds) {
+	public void save(BillCalculatorModel recidencyFeilds) {
 		Connection connection = null;
 		PreparedStatement pst = null;
 
@@ -19,17 +22,17 @@ public class RecidencyDetailsDAO {
 
 			connection = ConnectionUtil.getConnection();
 			if (connection != null) {
-				String sql = "INSERT INTO recidencytype(recidency_type,recidency_no,street_name,city_name,"
-						+ "district_name,years)VALUES(?,?,?,?,?,?)";
+				String sql = "INSERT INTO recidencytype(user_name,recidency_type,recidency_no,street_name,city_name,"
+						+ "district_name,years)VALUES(?,?,?,?,?,?,?)";
 
 				pst = connection.prepareStatement(sql);
-
-				pst.setString(1, recidencyFeilds.getRecidenyType());
-				pst.setString(2, recidencyFeilds.getRecidencyNo());
-				pst.setString(3, recidencyFeilds.getStreetName());
-				pst.setString(4, recidencyFeilds.getCityName());
-				pst.setString(5, recidencyFeilds.getDistrict());
-				pst.setString(6, recidencyFeilds.getYear());
+				pst.setString(1, recidencyFeilds.getUserName());
+				pst.setString(2, recidencyFeilds.getRecidenyType());
+				pst.setInt(3, recidencyFeilds.getRecidencyNo());
+				pst.setString(4, recidencyFeilds.getStreetName());
+				pst.setString(5, recidencyFeilds.getCityName());
+				pst.setString(6, recidencyFeilds.getDistrict());
+				pst.setInt(7, recidencyFeilds.getYear());
 
 				pst.executeUpdate();
 
@@ -41,8 +44,11 @@ public class RecidencyDetailsDAO {
 		}
 
 	}
+	/*
+	 * this method is used to get all recidency details of respective user
+	 */
 
-	public List<BillCalculatorModel> displayRecidencyDetails() {
+	public List<BillCalculatorModel> findAll() {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		List<BillCalculatorModel> recidencyList = new ArrayList<>();
@@ -54,16 +60,17 @@ public class RecidencyDetailsDAO {
 			pst = connection.prepareStatement(sql);
 			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
-				String recidencyId = rs.getString("recidency_id");
+				String username = rs.getString("user_name");
+				int recidencyId = rs.getInt("recidency_id");
 				String recidencyType = rs.getString("recidency_type");
-				String recidencyNo = rs.getString("recidency_no");
+				int recidencyNo = rs.getInt("recidency_no");
 				String streetName = rs.getString("street_name");
 				String cityName = rs.getString("city_name");
 				String district = rs.getString("district_name");
-				String year = rs.getString("years");
+				int year = rs.getInt("years");
 
-				BillCalculatorModel recidency = new BillCalculatorModel(recidencyId, recidencyType, recidencyNo,
-						streetName, cityName, district, year);
+				BillCalculatorModel recidency = new BillCalculatorModel(username, recidencyType, recidencyNo,
+						streetName, cityName, district, year, recidencyId);
 				recidencyList.add(recidency);
 			}
 		} catch (ClassNotFoundException | SQLException e) {

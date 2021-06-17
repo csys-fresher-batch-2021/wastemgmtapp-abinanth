@@ -13,11 +13,16 @@ recidency_id serial primary key,
 	recidencies varchar(100) not null unique
 );
 create table payment(
-	recidency_no varchar(100) not null,
+	user_name varchar(100) not null,
+	recidency_no int not null,
 	recidency_type varchar(100) not null,
-	amount varchar(3000) not null,
+	amount decimal not null,
 	status varchar(100) not null,
 	payment_id  serial primary key,
+	due_date date not null,
+	fine_amount decimal ,
+	paid_date date ,
+	total_amount decimal,
 	unique(recidency_no)
 	
 );

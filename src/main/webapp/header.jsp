@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="assets/css/style.css">
 <%
 String adminName = (String) session.getAttribute("LOGGED_IN_Admin");
-String username = (String) session.getAttribute("LOGGED_IN_USER");
+String username = (String) session.getAttribute("username");
 %>
 <header>
 	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -29,6 +29,8 @@ String username = (String) session.getAttribute("LOGGED_IN_USER");
 					href="TypeOfRecidency.jsp">Recidency Types</a></li>
 				<li class="nav-item"><a class="nav-link"
 					href="SearchRecidencyDetails.jsp">Search Payment Status</a></li>
+					<li class="nav-item active"><a class="nav-link"
+					href="BillCalculator.jsp">Bill Generator</a></li>
 				<%
 				}
 				%>
@@ -36,8 +38,7 @@ String username = (String) session.getAttribute("LOGGED_IN_USER");
 				if (username != null) {
 				%>
 
-				<li class="nav-item active"><a class="nav-link"
-					href="BillCalculator.jsp">Bill Generator</a></li>
+				
 <li class="nav-item active"><a class="nav-link"
 					href="MyBillServlet">My Bills</a></li>
 

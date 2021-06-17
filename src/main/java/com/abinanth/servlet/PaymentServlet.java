@@ -28,7 +28,7 @@ public class PaymentServlet extends HttpServlet {
 		log.print(updatePayment);
 		if (updatePayment) {
 
-			response.sendRedirect("MyBillServlet");
+			response.sendRedirect("MyBillServlet?paymentId="+paymentId);
 		} else {
 			String message = "Unable to process";
 			response.sendRedirect("BillGenerator.jsp?message" + message);

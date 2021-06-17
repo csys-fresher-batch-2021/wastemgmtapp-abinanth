@@ -1,7 +1,7 @@
 package com.abinanth.validator;
 
-public class AdminLoginValidation {
-	private AdminLoginValidation() {
+public class AdminLoginValidator {
+	private AdminLoginValidator() {
 
 	}
 

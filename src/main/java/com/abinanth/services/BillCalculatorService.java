@@ -6,8 +6,8 @@ import com.abinanth.dao.RecidencyDetailsDAO;
 import com.abinanth.exception.ValidationException;
 import com.abinanth.model.BillCalculatorModel;
 import com.abinanth.util.Logger;
-import com.abinanth.validator.ExistingRecidencyValidation;
-import com.abinanth.validator.RecidencyDetailsValidation;
+import com.abinanth.validator.ExistingRecidencyValidator;
+import com.abinanth.validator.RecidencyDetailsValidator;
 
 public class BillCalculatorService {
 	private BillCalculatorService() {
@@ -15,34 +15,39 @@ public class BillCalculatorService {
 	}
 
 	static RecidencyDetailsDAO dao = new RecidencyDetailsDAO();
+	/*
+	 * this method is used to get the recidency type
+	 */
 
 	public static List<BillCalculatorModel> getAllRecidencyType() {
 
-		return dao.displayRecidencyDetails();
+		return dao.findAll();
 
 	}
 
 	static Logger log = new Logger();
+	/*
+	 * this method is used to add recidency type
+	 */
 
 	public static boolean addRecidencyDetails(BillCalculatorModel recidencyFeilds) {
 		boolean isValid = false;
 
 		try {
-			boolean existingRecidencyValue = ExistingRecidencyValidation.isExistingRecidencyValue(recidencyFeilds);
-			boolean correctdetail = RecidencyDetailsValidation.isCorrectdetail(recidencyFeilds);
-			log.print(existingRecidencyValue);
+			boolean existingRecidencyValue = ExistingRecidencyValidator.isExistingRecidencyDetail(recidencyFeilds);
+			boolean correctdetail = RecidencyDetailsValidator.isValidRecidency(recidencyFeilds);
+
 			if (!existingRecidencyValue) {
 
 				throw new ValidationException("Already exists");
 
 			}
-			log.print(existingRecidencyValue);
 
 			if (!correctdetail) {
 				throw new ValidationException("Invalid Details");
 			}
-			log.print(correctdetail);
-			dao.addNewRecidencyDetails(recidencyFeilds);
+
+			dao.save(recidencyFeilds);
 			isValid = true;
 
 		} catch (Exception e) {
