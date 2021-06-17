@@ -35,7 +35,7 @@ public class PaymentDAO {
 	public void save(PaymentModel pay) {
 		Connection connection = null;
 		PreparedStatement pst = null;
-		Logger log = new Logger();
+
 		log.print(pay.getUsername());
 
 		try {
@@ -56,7 +56,7 @@ public class PaymentDAO {
 				pst.setDate(5, date);
 				pst.setDouble(6, pay.getAmount());
 
-				int rows = pst.executeUpdate();
+				pst.executeUpdate();
 
 			}
 		} catch (ClassNotFoundException | SQLException e) {
@@ -233,7 +233,7 @@ public class PaymentDAO {
 	public void updateFineAmount(double fineAmount, int paymentId) {
 		Connection connection = null;
 		PreparedStatement pst = null;
-		// log.print("Fine Amount Gone to DAO"+fineAmount);
+
 		try {
 
 			connection = ConnectionUtil.getConnection();
@@ -266,7 +266,7 @@ public class PaymentDAO {
 			pst.setInt(1, recidencyNo);
 			ResultSet rs = pst.executeQuery();
 			if (rs.next()) {
-				paymentId = rs.getInt("payment_id");
+				paymentId = rs.getInt(PAYMENT_ID);
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
@@ -283,7 +283,7 @@ public class PaymentDAO {
 	public void updateTotalAmount(double totalAmount, int paymentId) {
 		Connection connection = null;
 		PreparedStatement pst = null;
-		// log.print("DAO"+totalAmount);
+
 		try {
 
 			connection = ConnectionUtil.getConnection();

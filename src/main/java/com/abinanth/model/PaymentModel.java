@@ -75,7 +75,7 @@ public class PaymentModel {
 		return dueDate;
 	}
 
-	public void setDue_date(LocalDate dueDate) {
+	public void setDueDate(LocalDate dueDate) {
 		this.dueDate = dueDate;
 	}
 
@@ -83,7 +83,7 @@ public class PaymentModel {
 		return fineAmount;
 	}
 
-	public void setFine_amount(double fineAmount) {
+	public void setFineAmount(double fineAmount) {
 		this.fineAmount = fineAmount;
 	}
 
@@ -91,7 +91,7 @@ public class PaymentModel {
 		return paidDate;
 	}
 
-	public void setPaid_date(LocalDate paidDate) {
+	public void setPaidDate(LocalDate paidDate) {
 		this.paidDate = paidDate;
 	}
 

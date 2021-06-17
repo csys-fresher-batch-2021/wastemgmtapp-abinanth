@@ -20,7 +20,7 @@ import com.abinanth.util.Logger;
  */
 @WebServlet("/MyBillServlet")
 public class MyBillServlet extends HttpServlet {
-	Logger log = new Logger();
+	static Logger log = new Logger();
 	private static final long serialVersionUID = 1L;
 
 	/**
