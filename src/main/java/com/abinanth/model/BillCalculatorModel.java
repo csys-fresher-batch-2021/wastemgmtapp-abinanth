@@ -2,8 +2,7 @@ package com.abinanth.model;
 
 public class BillCalculatorModel {
 
-	
-private String userName;
+	private String userName;
 	private int recidencyId;
 	private String recidenyType;
 	private int recidencyNo;
@@ -76,12 +75,10 @@ private String userName;
 		this.recidencyId = recidencyId;
 	}
 
-
-
-	public BillCalculatorModel(String userName,String recidenyType, int recidencyNo, String streetName, String cityName,
-			String district, int year, int recidencyId) {
+	public BillCalculatorModel(String userName, String recidenyType, int recidencyNo, String streetName,
+			String cityName, String district, int year, int recidencyId) {
 		super();
-		this.userName=userName;
+		this.userName = userName;
 		this.recidenyType = recidenyType;
 		this.recidencyNo = recidencyNo;
 		this.streetName = streetName;
@@ -91,13 +88,8 @@ private String userName;
 		this.recidencyId = recidencyId;
 	}
 
-
-
-
-	
-
 	public BillCalculatorModel() {
-		// TODO Auto-generated constructor stub
+		// default constructor
 	}
 
 	@Override
@@ -106,6 +98,5 @@ private String userName;
 				+ recidenyType + ", recidencyNo=" + recidencyNo + ", streetName=" + streetName + ", cityName="
 				+ cityName + ", district=" + district + ", year=" + year + "]";
 	}
-	
 
 }
