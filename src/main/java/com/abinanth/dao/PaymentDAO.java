@@ -9,14 +9,13 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.abinanth.exception.DBException;
 import com.abinanth.model.PaymentModel;
-
 import com.abinanth.services.PaymentService;
 import com.abinanth.util.ConnectionUtil;
 import com.abinanth.util.Logger;
 
 public class PaymentDAO {
-
 	private static final String RECIDENCY_NO = "recidency_no";
 	private static final String RECIDENCY_TYPE = "recidency_type";
 	private static final String AMOUNT = "amount";
@@ -35,36 +34,29 @@ public class PaymentDAO {
 	public void save(PaymentModel pay) {
 		Connection connection = null;
 		PreparedStatement pst = null;
-
 		log.print(pay.getUsername());
-
 		try {
-
 			connection = ConnectionUtil.getConnection();
 			if (connection != null) {
 				String sql = "INSERT INTO payment(user_name,recidency_no,recidency_type,amount,status,"
-						+ "due_date,total_amount) VALUES(?,?,?,?,'PENDING',?,?)";
-
+						+ "due_date,total_amount,fine_amount) VALUES(?,?,?,?,?,?,?,?)";
 				pst = connection.prepareStatement(sql);
 				pst.setString(1, pay.getUsername());
 				pst.setInt(2, pay.getRecidencyNo());
-
 				pst.setString(3, pay.getRecidencyType());
 				pst.setDouble(4, pay.getAmount());
-
+				pst.setString(5, "PENDING");
 				Date date = Date.valueOf(PaymentService.getDueDate());
-				pst.setDate(5, date);
-				pst.setDouble(6, pay.getAmount());
-
+				pst.setDate(6, date);
+				pst.setDouble(7, pay.getAmount());
+				pst.setDouble(8, pay.getFineAmount());
 				pst.executeUpdate();
-
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+			throw new DBException("Unable to insert details");
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
-
 	}
 
 	/*
@@ -75,20 +67,15 @@ public class PaymentDAO {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		Date paymentDate = Date.valueOf(PaymentService.getPaidDate());
-
 		try {
-
 			connection = ConnectionUtil.getConnection();
 			String sql = "UPDATE payment SET status='PAID', paid_date=? WHERE payment_id=?";
 			pst = connection.prepareStatement(sql);
-
 			pst.setDate(1, paymentDate);
 			pst.setInt(2, paymentId);
-
 			pst.executeUpdate();
-
 		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+			throw new DBException("Unable to update the status");
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
@@ -102,10 +89,8 @@ public class PaymentDAO {
 		PreparedStatement pst = null;
 		List<PaymentModel> paymentStatus = new ArrayList<>();
 		try {
-
 			connection = ConnectionUtil.getConnection();
 			String sql = "SELECT * FROM payment";
-
 			pst = connection.prepareStatement(sql);
 			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
@@ -115,21 +100,20 @@ public class PaymentDAO {
 				String status = rs.getString(STATUS);
 				String username = rs.getString(USER_NAME);
 				int paymentId = rs.getInt(PAYMENT_ID);
-				LocalDate dueDate = rs.getDate("DUE_DATE").toLocalDate();
-				Double fineAmount = rs.getDouble("FINE_AMOUNT");
-				Date paidDateTemp = rs.getDate("PAID_DATE");
+				LocalDate dueDate = rs.getDate(DUE_DATE).toLocalDate();
+				Double fineAmount = rs.getDouble(FINE_AMOUNT);
+				Date paidDateTemp = rs.getDate(PAID_DATE);
 				LocalDate paidDate = null;
 				if (paidDateTemp != null) {
 					paidDate = paidDateTemp.toLocalDate();
 				}
-				double totalAmount = rs.getDouble("TOTAL_AMOUNT");
+				double totalAmount = rs.getDouble(TOTAL_AMOUNT);
 				PaymentModel paymentDetails = new PaymentModel(username, recidencyNo, recidencyType, amount, status,
 						paymentId, dueDate, fineAmount, paidDate, totalAmount);
 				paymentStatus.add(paymentDetails);
-
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+			throw new DBException("Unable to show the details");
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
@@ -144,14 +128,11 @@ public class PaymentDAO {
 		PreparedStatement pst = null;
 		List<PaymentModel> find = new ArrayList<>();
 		try {
-
 			connection = ConnectionUtil.getConnection();
 			String sql = "SELECT * FROM payment WHERE status ILIKE ? OR recidency_type ILIKE ?;";
-
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, "%" + word + "%");
 			pst.setString(2, "%" + word + "%");
-
 			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
 				String recidencyType = rs.getString(RECIDENCY_TYPE);
@@ -189,13 +170,10 @@ public class PaymentDAO {
 		PreparedStatement pst = null;
 		List<PaymentModel> billList = new ArrayList<>();
 		try {
-
 			connection = ConnectionUtil.getConnection();
 			String sql = "SELECT*FROM payment WHERE user_name=?";
-
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, username);
-
 			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
 				String recidencyType = rs.getString(RECIDENCY_TYPE);
@@ -223,7 +201,6 @@ public class PaymentDAO {
 			ConnectionUtil.close(pst, connection);
 		}
 		return billList;
-
 	}
 	/*
 	 * this method is used to update the fine amount is the user is payed after due
@@ -233,19 +210,16 @@ public class PaymentDAO {
 	public void updateFineAmount(double fineAmount, int paymentId) {
 		Connection connection = null;
 		PreparedStatement pst = null;
-
+		log.print("DAO FineAmount " + fineAmount);
 		try {
-
 			connection = ConnectionUtil.getConnection();
 			String sql = "UPDATE payment SET fine_amount=? WHERE payment_id=?";
 			pst = connection.prepareStatement(sql);
-
 			pst.setDouble(1, fineAmount);
 			pst.setInt(2, paymentId);
 			pst.executeUpdate();
-
 		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+			throw new DBException("Unable to update");
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
@@ -259,7 +233,6 @@ public class PaymentDAO {
 		PreparedStatement pst = null;
 		int paymentId = 0;
 		try {
-
 			connection = ConnectionUtil.getConnection();
 			String sql = "SELECT payment_id from payment where recidency_no=?";
 			pst = connection.prepareStatement(sql);
@@ -269,33 +242,28 @@ public class PaymentDAO {
 				paymentId = rs.getInt(PAYMENT_ID);
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+			throw new DBException(e, "unable to update");
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
 		return paymentId;
-
 	}
+
 	/*
 	 * this method is used to update total amount
 	 */
-
 	public void updateTotalAmount(double totalAmount, int paymentId) {
 		Connection connection = null;
 		PreparedStatement pst = null;
-
 		try {
-
 			connection = ConnectionUtil.getConnection();
 			String sql = "UPDATE payment SET total_amount=?WHERE payment_id=?";
 			pst = connection.prepareStatement(sql);
-
 			pst.setDouble(1, totalAmount);
 			pst.setInt(2, paymentId);
 			pst.executeUpdate();
-
 		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+			throw new DBException("unable to update");
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}

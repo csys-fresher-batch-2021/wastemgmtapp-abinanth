@@ -6,7 +6,6 @@ public class RecidencyModel {
 	public RecidencyModel(String newRecidency) {
 		super();
 		this.newRecidency = newRecidency;
-
 	}
 
 	public String getNewRecidency() {

@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class AdminLogin {
 	private AdminLogin() {
-
+//default constructor
 	}
 
 	private static final HashMap<String, String> adminLoginDetails = new HashMap<>();
@@ -21,6 +21,5 @@ public class AdminLogin {
 			}
 		}
 		return adminValidation;
-
 	}
 }

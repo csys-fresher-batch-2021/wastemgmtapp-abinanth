@@ -11,51 +11,36 @@ import com.abinanth.validator.RecidencyDetailsValidator;
 
 public class BillCalculatorService {
 	private BillCalculatorService() {
-
+		//default constructor
 	}
-
+	static Logger log = new Logger();
 	static RecidencyDetailsDAO dao = new RecidencyDetailsDAO();
 	/*
 	 * this method is used to get the recidency type
 	 */
-
 	public static List<BillCalculatorModel> getAllRecidencyType() {
-
 		return dao.findAll();
-
 	}
 
-	static Logger log = new Logger();
 	/*
 	 * this method is used to add recidency type
 	 */
-
 	public static boolean addRecidencyDetails(BillCalculatorModel recidencyFeilds) {
 		boolean isValid = false;
-
 		try {
 			boolean existingRecidencyValue = ExistingRecidencyValidator.isExistingRecidencyDetail(recidencyFeilds);
 			boolean correctdetail = RecidencyDetailsValidator.isValidRecidency(recidencyFeilds);
-
 			if (!existingRecidencyValue) {
-
 				throw new ValidationException("Already exists");
-
 			}
-
 			if (!correctdetail) {
 				throw new ValidationException("Invalid Details");
 			}
-
 			dao.save(recidencyFeilds);
 			isValid = true;
-
 		} catch (Exception e) {
 			e.printStackTrace();
-
 		}
-
 		return isValid;
-
 	}
 }

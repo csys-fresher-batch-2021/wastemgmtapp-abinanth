@@ -9,7 +9,6 @@ import com.abinanth.services.RecidencyTypeService;
 
 public class RecidencyTypeServiceTest {
 
-	
 	public void addProduct() {
 		RecidencyModel addRecidency = new RecidencyModel("");
 

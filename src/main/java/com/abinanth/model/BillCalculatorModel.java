@@ -1,7 +1,6 @@
 package com.abinanth.model;
 
 public class BillCalculatorModel {
-
 	private String userName;
 	private int recidencyId;
 	private String recidenyType;

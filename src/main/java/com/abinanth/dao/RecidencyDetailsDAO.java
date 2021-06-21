@@ -17,14 +17,11 @@ public class RecidencyDetailsDAO {
 	public void save(BillCalculatorModel recidencyFeilds) {
 		Connection connection = null;
 		PreparedStatement pst = null;
-
 		try {
-
 			connection = ConnectionUtil.getConnection();
 			if (connection != null) {
 				String sql = "INSERT INTO recidencytype(user_name,recidency_type,recidency_no,street_name,city_name,"
 						+ "district_name,years)VALUES(?,?,?,?,?,?,?)";
-
 				pst = connection.prepareStatement(sql);
 				pst.setString(1, recidencyFeilds.getUserName());
 				pst.setString(2, recidencyFeilds.getRecidenyType());
@@ -33,16 +30,13 @@ public class RecidencyDetailsDAO {
 				pst.setString(5, recidencyFeilds.getCityName());
 				pst.setString(6, recidencyFeilds.getDistrict());
 				pst.setInt(7, recidencyFeilds.getYear());
-
 				pst.executeUpdate();
-
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
-
 	}
 	/*
 	 * this method is used to get all recidency details of respective user
@@ -53,10 +47,8 @@ public class RecidencyDetailsDAO {
 		PreparedStatement pst = null;
 		List<BillCalculatorModel> recidencyList = new ArrayList<>();
 		try {
-
 			connection = ConnectionUtil.getConnection();
 			String sql = "SELECT * FROM recidencytype";
-
 			pst = connection.prepareStatement(sql);
 			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
@@ -68,7 +60,6 @@ public class RecidencyDetailsDAO {
 				String cityName = rs.getString("city_name");
 				String district = rs.getString("district_name");
 				int year = rs.getInt("years");
-
 				BillCalculatorModel recidency = new BillCalculatorModel(username, recidencyType, recidencyNo,
 						streetName, cityName, district, year, recidencyId);
 				recidencyList.add(recidency);

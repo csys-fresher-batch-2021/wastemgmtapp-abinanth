@@ -8,7 +8,6 @@
 <title>Add Recidency</title>
 </head>
 <body>
-
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<form action="AddRecidencyServlet" method="post">
@@ -18,9 +17,6 @@
 				out.println("<font color='red'>" + errorMessage + "</font>");
 			}
 			%>
-
-
-
 			<h2>Add Recidency</h2>
 
 			<label for=" addRecidency">Recidency</label> <input type="text"

@@ -31,7 +31,6 @@ public class SearchRecidencyDetailsServlet extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Logger log = new Logger();
-
 		String word = request.getParameter("search");
 		try {
 			List<PaymentModel> search = PaymentService.findRecidencyDetails(word);
@@ -45,5 +44,4 @@ public class SearchRecidencyDetailsServlet extends HttpServlet {
 			response.sendRedirect("SearchRecidencyDetails.jsp?message=" + message);
 		}
 	}
-
 }

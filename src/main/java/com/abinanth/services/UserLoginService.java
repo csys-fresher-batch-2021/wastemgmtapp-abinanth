@@ -6,18 +6,15 @@ import com.abinanth.validator.LoginValidator;
 
 public class UserLoginService {
 	private UserLoginService() {
-
+		//default constructor
 	}
-
 	public static boolean addUserLogin(String username, String password) {
 		boolean userValidation = false;
 		if (LoginValidator.checkUserName(username) && LoginValidator.checkPassword(password)) {
 			userValidation = true;
-
 		} else {
 			throw new ValidationException("Invalid");
 		}
-
 		return userValidation;
 	}
 
