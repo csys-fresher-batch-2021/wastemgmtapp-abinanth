@@ -22,6 +22,7 @@ public class PaymentService {
 	public static boolean addPaymentDetails(PaymentModel newPayment) {
 		boolean flag = false;
 		try {
+			newPayment.setFineAmount(0.0);
 			dao.save(newPayment);
 			flag=true;
 		} catch (ValidationException e) {
@@ -125,14 +126,6 @@ public class PaymentService {
 		}
 		return paymentId;
 
-	}
-	/*
-	 * this method implents default fine amount
-	 */
-
-	public static double setDefaultFineAmount() {
-		double defaultFinePay;
-		return defaultFinePay=0.0;
 	}
 
 }

@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.abinanth.exception.DBException;
 import com.abinanth.model.PaymentModel;
 import com.abinanth.services.PaymentService;
@@ -196,7 +195,8 @@ public class PaymentDAO {
 				billList.add(bill);
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+			throw new DBException("Unable to find the username");
+
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
