@@ -21,18 +21,15 @@ public class AdminLoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String username = request.getParameter("adminUserName");
-
 		String password = request.getParameter("adminPassword");
 		boolean isValid = AdminLogin.checkAdminLogin(username, password);
 		if (isValid) {
 			HttpSession session = request.getSession();
 			session.setAttribute("LOGGED_IN_Admin", username);
 			response.sendRedirect("TypeOfRecidency.jsp");
-
 		} else {
 			String errorMessage = "Invalid Credentials";
 			response.sendRedirect("Login.jsp?errorMessage=" + errorMessage);
 		}
-
 	}
 }

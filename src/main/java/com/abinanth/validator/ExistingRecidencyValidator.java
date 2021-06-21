@@ -11,18 +11,16 @@ public class ExistingRecidencyValidator {
 	}
 
 	public static boolean isExistingRecidencyDetail(BillCalculatorModel addRecidencyDetails) {
-
 		boolean isSame = true;
 		RecidencyDetailsDAO dao = new RecidencyDetailsDAO();
 		List<BillCalculatorModel> recidencydetailsList = dao.findAll();
 		for (BillCalculatorModel checkRecidencyDetails : recidencydetailsList) {
-			if (checkRecidencyDetails.getRecidencyNo()==addRecidencyDetails.getRecidencyNo()
+			if (checkRecidencyDetails.getRecidencyNo() == addRecidencyDetails.getRecidencyNo()
 					&& checkRecidencyDetails.getCityName().equalsIgnoreCase(addRecidencyDetails.getCityName())
 					&& checkRecidencyDetails.getDistrict().equalsIgnoreCase(addRecidencyDetails.getDistrict())
 					&& checkRecidencyDetails.getStreetName().equalsIgnoreCase(addRecidencyDetails.getStreetName())
-					&& checkRecidencyDetails.getYear()==addRecidencyDetails.getYear()
-					&& checkRecidencyDetails.getRecidenyType()
-							.equalsIgnoreCase(addRecidencyDetails.getRecidenyType())) {
+					&& checkRecidencyDetails.getYear() == addRecidencyDetails.getYear() && checkRecidencyDetails
+							.getRecidenyType().equalsIgnoreCase(addRecidencyDetails.getRecidenyType())) {
 				isSame = false;
 			}
 		}

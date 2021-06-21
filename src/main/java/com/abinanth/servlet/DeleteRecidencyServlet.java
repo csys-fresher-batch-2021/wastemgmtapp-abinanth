@@ -16,17 +16,14 @@ public class DeleteRecidencyServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		String deleteRecidency = request.getParameter("recidencyType");
 		RecidencyModel delete = new RecidencyModel(deleteRecidency);
 		boolean isValid = RecidencyTypeService.deleteRecidencyType(delete);
 		if (isValid) {
 			String infoMessage = "Recidency Deleted Sucessfully";
 			response.sendRedirect("TypeOfRecidency.jsp?infoMessage=" + infoMessage);
-
 		} else {
 			response.sendRedirect("TypeOfRecidency.jsp");
 		}
-
 	}
 }

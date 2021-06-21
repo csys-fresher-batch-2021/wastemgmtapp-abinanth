@@ -21,18 +21,15 @@ public class DisplayAllDetailsServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		Logger log = new Logger();
 		HttpSession session = request.getSession();
 		log.print("############### Display servlet works#################");
-
-		int recidencyNo = Integer.parseInt( (String) session.getAttribute("recidencyNo"));
+		int recidencyNo = Integer.parseInt((String) session.getAttribute("recidencyNo"));
 		log.print(recidencyNo);
-		int finalAmount =Integer.parseInt( (String) session.getAttribute("amount"));
+		int finalAmount = Integer.parseInt((String) session.getAttribute("amount"));
 		String recidencyType = (String) session.getAttribute("recidencyType");
 		String status = (String) session.getAttribute("status");
 		String username = (String) session.getAttribute("username");
-
 		log.print(username);
 		PaymentModel payment = new PaymentModel();
 		payment.setRecidencyNo(recidencyNo);
@@ -41,8 +38,6 @@ public class DisplayAllDetailsServlet extends HttpServlet {
 		payment.setStatus(status);
 		payment.setTotalAmount(finalAmount);
 		payment.setUsername(username);
-	
-
 		boolean isCorrect = PaymentService.addPaymentDetails(payment);
 		if (isCorrect) {
 			String message = "Successfully Added";
@@ -52,5 +47,4 @@ public class DisplayAllDetailsServlet extends HttpServlet {
 			response.sendRedirect("BillGenerator.jsp?errorMessage=" + errorMessage);
 		}
 	}
-
 }

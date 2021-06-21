@@ -19,12 +19,10 @@ public class RecidencyDAO {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		try {
-
 			connection = ConnectionUtil.getConnection();
 			String sql = "INSERT INTO recidency(recidencies) VALUES(?)";
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, addRecidency.getNewRecidency());
-
 			pst.executeUpdate();
 
 		} catch (ClassNotFoundException | SQLException e) {
@@ -33,15 +31,15 @@ public class RecidencyDAO {
 			ConnectionUtil.close(pst, connection);
 		}
 	}
-/*
- * this method is used to get all the date from recidencytype database
- */
+
+	/*
+	 * this method is used to get all the date from recidencytype database
+	 */
 	public List<RecidencyModel> findAll() {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		List<RecidencyModel> recidencyList = new ArrayList<>();
 		try {
-
 			connection = ConnectionUtil.getConnection();
 			String sql = "SELECT * FROM recidency";
 			pst = connection.prepareStatement(sql);
@@ -66,14 +64,11 @@ public class RecidencyDAO {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		try {
-
 			connection = ConnectionUtil.getConnection();
 			String sql = "DELETE FROM recidency WHERE recidencies=?";
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, deleteRecidency.getNewRecidency());
-
 			pst.executeUpdate();
-
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		} finally {

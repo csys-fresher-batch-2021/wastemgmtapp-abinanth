@@ -31,6 +31,6 @@
 		</form>
 		<a href="UserLogin.jsp">User Login</a>
 	</main>
-	
+
 </body>
 </html>

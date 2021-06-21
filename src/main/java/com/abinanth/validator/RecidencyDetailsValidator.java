@@ -14,7 +14,7 @@ public class RecidencyDetailsValidator {
 
 			isValid = false;
 		}
-	
+
 		if (!BillCalculatorValidator.recidencyTypeValidation(addRecidencyDetails.getStreetName())) {
 
 			isValid = false;
@@ -27,10 +27,7 @@ public class RecidencyDetailsValidator {
 
 			isValid = false;
 		}
-		
-
 		return isValid;
 	}
-	
 
 }

@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import com.abinanth.exception.InputMissMatchException;
 import com.abinanth.exception.ValidationException;
 import com.abinanth.model.BillCalculatorModel;
@@ -29,7 +28,6 @@ public class BillCalculatorServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Logger log = new Logger();
-
 		String username = request.getParameter("username");
 		String recidencyType = request.getParameter("recidencyType");
 		int recidencyNo = Integer.parseInt(request.getParameter("recidencyNo"));
@@ -37,7 +35,6 @@ public class BillCalculatorServlet extends HttpServlet {
 		String cityName = request.getParameter("cityName");
 		String district = request.getParameter("districtName");
 		int year = Integer.parseInt(request.getParameter("date"));
-
 		BillCalculatorModel bill = new BillCalculatorModel();
 		bill.setUserName(username);
 		bill.setRecidenyType(recidencyType);
@@ -46,40 +43,33 @@ public class BillCalculatorServlet extends HttpServlet {
 		bill.setCityName(cityName);
 		bill.setDistrict(district);
 		bill.setYear(year);
-
 		boolean flag = BillCalculatorService.addRecidencyDetails(bill);
 		HttpSession session = request.getSession();
 		double amount = 0;
 		try {
-
 			if (flag) {
 				log.print("Year=" + year + ",recidencyType=" + recidencyType);
 				amount = BillGeneratorService.generateBill(recidencyType, year);
 				log.print("servlet Amount" + amount);
-
 				PaymentModel payment = new PaymentModel();
 				payment.setUsername(username);
 				payment.setRecidencyNo(recidencyNo);
 				payment.setRecidencyType(recidencyType);
 				payment.setAmount(amount);
-
+				log.print(payment);
 				boolean isCorrect = PaymentService.addPaymentDetails(payment);
-
-				log.print(isCorrect);
-				String message = "Bill Generated Successfully";
-				response.sendRedirect("BillCalculator.jsp?message=" + message);
+				if (isCorrect) {
+					String message = "Bill Generated Successfully";
+					response.sendRedirect("BillCalculator.jsp?message=" + message);
+				}
 			} else {
 				String errorMessage = "Unable To Add  Input Credentials";
 				session.setAttribute("errorMessage", errorMessage);
 				response.sendRedirect("BillCalculator.jsp?errorMessage=" + errorMessage);
-
 			}
-
 		} catch (ValidationException | InputMissMatchException e) {
 			e.printStackTrace();
-
 			response.sendRedirect("BillCalculator.jsp?errorMessage=" + e.getMessage());
-
 		}
 	}
 

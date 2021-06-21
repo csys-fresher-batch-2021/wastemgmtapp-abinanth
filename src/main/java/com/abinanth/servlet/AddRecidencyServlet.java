@@ -26,19 +26,14 @@ public class AddRecidencyServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		String newRecidency = request.getParameter("recidency");
 		RecidencyModel recidencyPackage = new RecidencyModel(newRecidency);
 		boolean isValid = RecidencyTypeService.addRecidencyType(recidencyPackage);
 		if (isValid) {
-
 			response.sendRedirect("TypeOfRecidency.jsp");
-
 		} else {
 			String errorMessage = "Already exists";
 			response.sendRedirect("addRecidency.jsp?errorMessage=" + errorMessage);
 		}
-
 	}
-
 }

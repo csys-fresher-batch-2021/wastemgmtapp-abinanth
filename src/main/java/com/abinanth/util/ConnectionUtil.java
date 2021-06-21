@@ -7,7 +7,6 @@ import java.sql.Statement;
 
 public class ConnectionUtil {
 	private ConnectionUtil() {
-
 	}
 
 	private static String driverClass = System.getenv("spring.datasource.driver-class-name");
@@ -16,10 +15,8 @@ public class ConnectionUtil {
 	private static String password = System.getenv("spring.datasource.password");
 
 	public static Connection getConnection() throws ClassNotFoundException, SQLException {
-
 		Class.forName(driverClass);
 		Connection connection = DriverManager.getConnection(url, username, password);
-
 		return connection;
 	}
 
@@ -28,7 +25,6 @@ public class ConnectionUtil {
 			if (con != null && st != null) {
 				con.close();
 				st.close();
-
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

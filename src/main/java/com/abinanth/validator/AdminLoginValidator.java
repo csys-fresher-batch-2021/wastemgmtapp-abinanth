@@ -2,7 +2,6 @@ package com.abinanth.validator;
 
 public class AdminLoginValidator {
 	private AdminLoginValidator() {
-
 	}
 
 	public static boolean adminValidation(String adminName, String password) {
@@ -12,5 +11,4 @@ public class AdminLoginValidator {
 		}
 		return valid;
 	}
-
 }

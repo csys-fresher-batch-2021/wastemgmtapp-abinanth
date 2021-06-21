@@ -4,7 +4,6 @@
 <%@page import="com.abinanth.dao.RecidencyDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="com.abinanth.services.RecidencyTypeService"%>
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -12,7 +11,6 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Waste Management</title>
-
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
@@ -20,7 +18,6 @@
 		<table class=" table table-container-fluid">
 			<caption>Available Recidency</caption>
 			<h2>Recidency Types</h2>
-
 			<thead>
 				<tr>
 					<th scope="col">S.No</th>
@@ -34,7 +31,6 @@
 					out.println("<font color='green'>" + infoMessage + "</font>");
 				}
 				%>
-
 				<%
 				RecidencyDAO dao = new RecidencyDAO();
 				List<RecidencyModel> recidencyType = RecidencyTypeService.displayRecidencyType();
@@ -52,15 +48,12 @@
 				<%
 				}
 				%>
-
 			</tbody>
 		</table>
 		<a href="addRecidency.jsp">Add Recidency</a>
 	</main>
 </body>
 </html>
-
-
 
 
 

@@ -22,7 +22,7 @@
 			String userName = (String) session.getAttribute("username");
 			%>
 			<h2>Search by Status or Recidency Name</h2>
-			<label for="text">Search</label><input type="text" name="search"
+			<input type="text" name="search"
 				required>
 			<button type="submit">Search</button>
 		</form>

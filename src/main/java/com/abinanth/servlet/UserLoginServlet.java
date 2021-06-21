@@ -23,19 +23,16 @@ public class UserLoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		
-		boolean flag=UserLoginService.addUserLogin(username,password);
-		Logger log=new Logger();
+		boolean flag = UserLoginService.addUserLogin(username, password);
+		Logger log = new Logger();
 		log.print(flag);
 		if (flag) {
 			HttpSession session = request.getSession();
 			session.setAttribute("username", username);
 			response.sendRedirect("MyBillServlet");
-
 		} else {
 			String errorMessage = "Invalid Login Credentials";
 			response.sendRedirect("UserLogin.jsp?errorMessage=" + errorMessage);
 		}
 	}
-
 }
